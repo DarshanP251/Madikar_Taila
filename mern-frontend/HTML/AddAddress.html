@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" />
+  <style>
+    /* Improved styling */
+    .add-address {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      gap: 15px;
+      padding: 10px 0;
+    }
+
+    .arrow-chevron-left {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+    }
+
+    .add-address1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+    }
+
+    .buttons {
+      margin-top: 30px;
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-weight: 500;
+    }
+
+    .buttons:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      color: #dc3545;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="add-address">
+    <div class="titlebar">
+      <img class="arrow-chevron-left" alt="Back" src="../SRC/Chevron_Left.svg" onclick="window.history.back()">
+      <div class="add-address1">Add Address</div>
+    </div>
+    
+    <div class="body">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <textarea id="address" rows="3" placeholder="Full Address" required></textarea>
+      <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="pincode" placeholder="Pincode" required>
+    </div>
+
+    <div class="buttons" id="buttonsContainer">
+      Save Address
+    </div>
+    <div id="error-message" class="error-message"></div>
+  </div>
+
+  <script>
+  const API_BASE = 'http://localhost:5000/api';
+
+  async function verifyAndRefreshToken() {
+    let authToken = localStorage.getItem('authToken');
+    let refreshToken = localStorage.getItem('refreshToken');
+
+    if (!authToken || !refreshToken) {
+      redirectToLogin();
+      throw new Error('Missing authentication tokens');
+    }
+
+    try {
+      // Verify token
+      const verifyResponse = await fetch(`${API_BASE}/auth/verify`, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
+
+      if (!verifyResponse.ok) throw new Error('Token verification failed');
+      return authToken;
+    } catch (error) {
+      // Refresh token
+      const refreshed = await fetch(`${API_BASE}/auth/refresh`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refreshToken }),
+      });
+
+      if (!refreshed.ok) {
+        redirectToLogin();
+        throw new Error('Unable to refresh token');
+      }
+
+      const data = await refreshed.json();
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      return data.token;
+    }
+  }
+
+  function redirectToLogin() {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+    window.location.href = '../HTML/login.html';
+  }
+
+  document.getElementById('buttonsContainer').addEventListener('click', async function(e) {
+    e.preventDefault();
+    const errorDiv = document.getElementById('error-message');
+    errorDiv.textContent = '';
+    
+    const addressData = {
+      name: document.getElementById('name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      address: document.getElementById('address').value.trim(),
+      city: document.getElementById('city').value.trim(),
+      pincode: document.getElementById('pincode').value.trim()
+    };
+
+    // Basic validation
+    if (!Object.values(addressData).every(field => field)) {
+      errorDiv.textContent = 'Please fill all required fields';
+      return;
+    }
+
+    try {
+      const token = await verifyAndRefreshToken();
+      const response = await fetch(`${API_BASE}/addresses`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(addressData)
+      });
+
+      const responseData = await response.json();
+      
+      if (!response.ok) {
+        if (response.status === 400) {
+          // Handle validation errors
+          errorDiv.textContent = responseData.errors?.[0]?.msg || 'Invalid address data';
+        } else {
+          throw new Error(responseData.message || 'Failed to save address');
+        }
+        return;
+      }
+
+      window.location.href = 'checkout.html';
+    } catch (error) {
+      console.error('Error:', error);
+      errorDiv.textContent = error.message || 'Failed to save address';
+    }
+  });
+  </script>
+</body>
+</html>

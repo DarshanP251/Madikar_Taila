@@ -1,0 +1,369 @@
+/*Aboutus*/
+.about-child {
+    position: absolute;
+    height: 21.1%;
+    width: 76.34%;
+    top: 10.34%;
+    right: 6.62%;
+    bottom: 68.57%;
+    left: 17.05%;
+    border-radius: 50%;
+    background-color: #f2ffe6;
+}
+.about-item {
+    position: absolute;
+    top: 780px;
+    left: 13px;
+    width: 202.4px;
+    height: 182.4px;
+    object-fit: contain;
+}
+.titlebar-child {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 196.5px);
+    background: linear-gradient(176.74deg, rgba(72, 203, 102, 0.1), var(--color-lightgreen));
+    width: 393px;
+    height: 118px;
+}
+.arrow-chevron-left {
+    position: absolute;
+    top: 89px;
+    left: 7px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    opacity: 0.7;
+}
+.titlebar {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 196.5px);
+    width: 393px;
+    height: 118px;
+}
+.about-us {
+    position: absolute;
+    top: 87px;
+    left: calc(50% - 36.5px);
+    line-height: 150%;
+    font-family: var(--font-satoshi);
+    color: #000;
+}
+.our {
+    margin: 0;
+}
+.our-inspiration {
+    position: absolute;
+    top: 2px;
+    left: calc(50% - 50.5px);
+    display: inline-block;
+    width: 101px;
+    height: 49px;
+}
+.group-child {
+    position: absolute;
+    top: -1.5px;
+    left: -1.5px;
+    background-color: var(--color-brand-green);
+    border-top: 3px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    width: 97px;
+    height: 3px;
+}
+.our-inspiration-parent {
+    position: absolute;
+    top: 147px;
+    left: calc(50% - 176.5px);
+    width: 101px;
+    height: 51px;
+}
+.about-inner {
+    position: absolute;
+    top: 410px;
+    left: calc(50% - 177.5px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-ghostwhite);
+    width: 355px;
+    height: 340px;
+}
+.rajiv-dixit-was {
+    margin: 0;
+    font-weight: 500;
+}
+.span {
+    white-space: pre-wrap;
+}
+.refined-oils-are {
+    font-weight: 500;
+    font-family: var(--font-montserrat);
+}
+.rajiv-dixit-was-container {
+    position: absolute;
+    top: 415px;
+    left: calc(50% - 168.5px);
+    font-size: var(--font-size-xs);
+    line-height: 125%;
+    color: var(--color-grey-Color-5);
+    display: inline-block;
+    width: 337px;
+    height: 329px;
+}
+.interface-dummy-circle-small {
+    position: absolute;
+    top: 626px;
+    left: 28px;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+}
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    line-height: 150%;
+}
+.black-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 25px;
+}
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 167px;
+    height: 36px;
+    font-size: 24px;
+    font-family: var(--font-hawthorne-vintage);
+}
+.our-vision-parent {
+    position: absolute;
+    top: 774px;
+    left: calc(50% - 176.5px);
+    width: 101px;
+    height: 51px;
+}
+.our-process-parent {
+    position: absolute;
+    top: 1262px;
+    left: calc(50% - 176.5px);
+    width: 101px;
+    height: 51px;
+}
+.dsc00124-1-icon {
+    position: absolute;
+    top: 774px;
+    left: 197px;
+    border-radius: var(--br-xs);
+    width: 159.2px;
+    height: 188px;
+    object-fit: cover;
+}
+.rectangle-div {
+    position: absolute;
+    top: 984px;
+    left: calc(50% - 177.5px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-ghostwhite);
+    width: 355px;
+    height: 242px;
+}
+.we-are-not {
+    margin: 0;
+    font-weight: 600;
+}
+.we-are-not-container {
+    position: absolute;
+    top: 992px;
+    left: calc(50% - 168.5px);
+    font-size: var(--font-size-xs);
+    color: var(--color-grey-Color-5);
+    display: inline-block;
+    width: 337px;
+}
+.cold-pressed-with-purpose {
+    position: absolute;
+    top: 855px;
+    left: 20px;
+    font-size: 16px;
+    font-weight: 800;
+    display: inline-block;
+    width: 135px;
+}
+.rajiv-bhai-1-icon {
+    position: absolute;
+    top: 147px;
+    left: 67px;
+    width: 280.5px;
+    height: 256px;
+    object-fit: cover;
+}
+.about {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 1422px;
+    overflow: hidden;
+    flex-shrink: 0;
+    text-align: left;
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-green);
+    font-family: var(--font-montserrat);
+}
+/* nav bar */
+.buttons4 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% - 64.75px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 100;
+    pointer-events: auto    ;
+}
+.buttons5 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% + 23.25px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+    background-color: var(--color-grey-Color);
+
+}
+.magnifier-icon {
+    position: absolute;
+    bottom: 12.8px;
+    left: calc(50% + 125px);
+    width: 22.5px;
+    height: 22.5px;
+    object-fit: contain;
+}
+.buttons6 {
+    position: absolute;
+    bottom: 7.3px;
+    left: calc(50% - 155.75px);
+    border-radius: var(--br-xs);
+    width: 80px;
+    height: 35px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto
+}
+.nav-bar{
+        position: fixed;
+        bottom: 12px;
+        left: 0;
+        width: 100%;
+        z-index: 9999; /* Make sure it’s above everything */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px; /* your preferred height */
+        
+}
+.background {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 178.75px);
+    border-radius: 40px;
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-base-black);
+    box-sizing: border-box;
+    width: 357.5px;
+    height: 50px;
+}
+.medium3 {
+    position: relative;
+    line-height: 26px;
+    font-weight: 300;
+    font-size: 14px;
+}
+/*search bar*/
+.magnifyingglass1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    line-height: 50px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.magnifyingglass {
+    width: 28px;
+    position: relative;
+    height: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.search {
+    color: var(--Label-Colors-LC-L-Secondary);
+}
+.placeholder-label {
+    flex: 1;
+    position: relative;
+    font-size: var(--Default-size-Body-size);
+    letter-spacing: -0.41px;
+    line-height: 22px;
+    font-family: var(--Default-size-Body);
+    text-align: left;
+    color: #0a7aff;
+}
+.content {
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    background-color: var(--System-Materials-SM-L-Thick);
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-5xs);
+    box-sizing: border-box;
+}
+.searchbar {
+    width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--Label-Colors-LC-L-Secondary);
+    font-family: var(--font-sf-pro-display);
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet"  href="../CSS/EmptyCart.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+</head>
+
+<body>
+  <div class="cart-container">
+    <div class="titlebar">
+      <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" alt="Back" class="backarrow-icon"
+        onclick="history.back()" />
+      <div class="shopping-cart">Shopping Cart</div>
+    </div>
+
+    <div id="error-message" class="error-message"></div>
+    <div id="status-message" class="status-message">
+      <span id="status-text"></span>
+      <button id="retry-button" class="retry-button" style="display: none;">Retry</button>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading" style="display: none; text-align: center; padding: 20px;">
+      <div class="loading-indicator"></div>
+      <span>Processing your request...</span>
+    </div>
+
+    <div class="cart-items-container" id="cart-items"></div>
+
+    <div class="summary-card" id="summary-card" style="display: none;">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="subtotal">₹0/-</span>
+      </div>
+      <div class="summary-row">
+        <span>Delivery</span>
+        <span>₹80/-</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span id="total">₹0/-</span>
+      </div>
+      <button class="checkout-button" onclick="proceedToCheckout()">Checkout</button>
+    </div>
+
+    <div class="start-shopping" onclick="window.location.href='../HTML/Shopp1.html'">
+      <span>Start Shopping</span>
+    </div>
+  </div>
+
+  <script>
+    // API Configuration
+    const API_BASE_URL = 'http://localhost:5000/api';
+    
+    // State management
+    let currentCartItems = [];
+    let lastFailedRequest = null;
+
+    // DOM Elements
+    const statusMessageEl = document.getElementById('status-message');
+    const statusTextEl = document.getElementById('status-text');
+    const retryButtonEl = document.getElementById('retry-button');
+    const loadingEl = document.getElementById('loading');
+
+    // Enhanced Token Handling
+    function getToken() {
+      const token = localStorage.getItem('authToken'); // Changed from 'token' to 'authToken'
+      if (!token) {
+        showStatus('Please log in to access your cart', 'error');
+        setTimeout(() => {
+          window.location.href = '../HTML/login.html';
+        }, 1500);
+        return null;
+      }
+      return token;
+    }
+
+    // Utility Functions
+    function showStatus(message, type = 'error', isRetryable = false) {
+      statusTextEl.textContent = message;
+      statusMessageEl.className = `status-message ${type}-message`;
+      statusMessageEl.style.display = 'block';
+      retryButtonEl.style.display = isRetryable ? 'block' : 'none';
+    }
+    
+    function hideStatus() {
+      statusMessageEl.style.display = 'none';
+    }
+    
+    function showLoading() {
+      loadingEl.style.display = 'block';
+    }
+    
+    function hideLoading() {
+      loadingEl.style.display = 'none';
+    }
+
+    // Enhanced API Handler with token refresh
+    async function makeApiRequest(endpoint, method = 'GET', body = null) {
+      const token = getToken();
+      if (!token) return null;
+      
+      const options = {
+        method,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      
+      if (body) {
+        options.body = JSON.stringify(body);
+      }
+      
+      try {
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+        
+        if (response.status === 401) {
+          // Token expired - attempt refresh
+          const refreshToken = localStorage.getItem('refreshToken');
+          if (refreshToken) {
+            const refreshResponse = await fetch(`${API_BASE_URL}/auth/refresh-token`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${refreshToken}`
+              }
+            });
+            
+            if (refreshResponse.ok) {
+              const { token: newToken } = await refreshResponse.json();
+              localStorage.setItem('authToken', newToken);
+              return makeApiRequest(endpoint, method, body); // Retry original request
+            }
+          }
+          
+          // If refresh fails, redirect to login
+          localStorage.removeItem('authToken');
+          showStatus('Session expired. Please login again.', 'error');
+          setTimeout(() => window.location.href = '../HTML/login.html', 1500);
+          return null;
+        }
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || `Request failed with status ${response.status}`);
+        }
+        
+        return await response.json();
+      } catch (err) {
+        console.error('API Error:', err);
+        showStatus(`API Error: ${err.message}`, 'error', true);
+        throw err;
+      }
+    }
+
+    // Cart Operations
+    async function getCartItems() {
+      showLoading();
+      hideStatus();
+      
+      try {
+        const response = await makeApiRequest('/cart');
+        if (!response) return [];
+        
+        currentCartItems = response.items || [];
+        renderCart(currentCartItems);
+        return currentCartItems;
+      } catch (err) {
+        showStatus(`Failed to load cart: ${err.message}`, 'error', true);
+        return [];
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // Quantity Management
+    async function updateCartItem(cartItemId, quantity, size) {
+      showLoading();
+      hideStatus();
+      
+      try {
+        await makeApiRequest('/cart', 'POST', {
+          action: 'update',
+          cartItemId,
+          quantity,
+          size
+        });
+        await getCartItems();
+      } catch (err) {
+        showStatus(`Failed to update item: ${err.message}`, 'error', true);
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // Cart rendering
+    function renderCart(items) {
+      const cartItemsDiv = document.getElementById('cart-items');
+      const subtotalDiv = document.getElementById('subtotal');
+      const totalDiv = document.getElementById('total');
+      const summaryCard = document.getElementById('summary-card');
+
+      cartItemsDiv.innerHTML = '';
+      
+      if (!items || items.length === 0) {
+        cartItemsDiv.innerHTML = `
+          <div class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <div class="empty-cart-message">Your cart is empty!</div>
+          </div>
+        `;
+        summaryCard.style.display = 'none';
+        return;
+      }
+
+      let subtotal = 0;
+      items.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="item-details">
+            <h3>${item.name}</h3>
+            <p class="item-description">Size: ${item.size}</p>
+            <div class="remove-item" onclick="removeItem('${item._id}')">Remove</div>
+          </div>
+          <div class="item-actions">
+            <button onclick="decreaseQuantity('${item._id}', '${item.size}')">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="increaseQuantity('${item._id}', '${item.size}')">+</button>
+          </div>
+          <div class="item-price">₹${itemTotal}/-</div>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+
+      subtotalDiv.textContent = `₹${subtotal}/-`;
+      totalDiv.textContent = `₹${subtotal + 80}/-`;
+      summaryCard.style.display = 'block';
+    }
+
+    async function removeItem(cartItemId) {
+      if (!confirm('Are you sure you want to remove this item?')) return;
+      showLoading();
+      try {
+        await makeApiRequest('/cart', 'POST', { action: 'remove', cartItemId });
+        await getCartItems();
+      } catch (err) {
+        showStatus(`Failed to remove item: ${err.message}`, 'error', true);
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // Quantity Management
+    async function increaseQuantity(cartItemId, currentSize) {
+      const item = currentCartItems.find(i => i._id === cartItemId);
+      if (!item) {
+        showStatus('Item not found in cart', 'error');
+        return;
+      }
+      
+      const newQuantity = item.quantity + 1;
+      await updateCartItem(cartItemId, newQuantity, currentSize || item.size);
+    }
+
+    async function decreaseQuantity(cartItemId, currentSize) {
+      const item = currentCartItems.find(i => i._id === cartItemId);
+      if (!item) {
+        showStatus('Item not found in cart', 'error');
+        return;
+      }
+      
+      if (item.quantity > 1) {
+        const newQuantity = item.quantity - 1;
+        await updateCartItem(cartItemId, newQuantity, currentSize || item.size);
+      } else {
+        await removeCartItem(cartItemId);
+      }
+    }
+
+
+
+    // Initialize cart
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('authToken')) {
+        showStatus('Please login to view your cart', 'error');
+        setTimeout(() => window.location.href = '../HTML/login.html', 1500);
+        return;
+      }
+      
+      getCartItems();
+      retryButtonEl.addEventListener('click', getCartItems);
+    });
+
+    function proceedToCheckout() {
+      if (currentCartItems.length === 0) {
+        showStatus('Your cart is empty. Add items before checkout.', 'error');
+        return;
+      }
+      window.location.href = '../HTML/Checkout.html';
+    }
+  </script>
+</body>
+</html>

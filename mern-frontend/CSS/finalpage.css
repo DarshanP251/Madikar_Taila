@@ -1,0 +1,103 @@
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    line-height: 150%;
+}
+.black-icon {
+    position: absolute;
+    height: 69.44%;
+    width: 11.98%;
+    top: 0%;
+    right: 88.02%;
+    bottom: 30.56%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 167px;
+    height: 36px;
+    font-family: var(--font-hawthorne-vintage);
+}
+.your-products-are {
+    margin: 0;
+}
+.your-products-ar-container1 {
+    width: 100%;
+}
+.your-products-ar-container {
+    position: absolute;
+    top: calc(50% + 8px);
+    left: calc(50% - 97.5px);
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 196px;
+    height: 68px;
+}
+.thank-you-for-container {
+    position: absolute;
+    bottom: 305px;
+    left: calc(50% - 120.5px);
+    font-size: 12px;
+    line-height: 13.62px;
+    color: #2d2d2d;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 241px;
+    height: 45px;
+}
+.continue-shopping {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 600;
+}
+.start-shopping {
+    position: absolute;
+    top: calc(50% + 338px);
+    left: calc(50% - 174.5px);
+    border-radius: 12px;
+    background-color: #48cb66;
+    width: 350px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--Primary-Base-White1);
+}
+.image-icon {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 49.5px);
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.final {
+    width: 100%;
+    position: relative;
+    background-color: var(--Primary-Base-White);
+    height: 852px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 24px;
+    color: var(--color-brand-green);
+    font-family: var(--font-montserrat);
+}
+

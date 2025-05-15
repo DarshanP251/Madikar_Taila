@@ -1,0 +1,423 @@
+.background-icon {
+    position: absolute;
+    top: -1px;
+    left: calc(50% - 196.5px);
+    width: 393px;
+    height: 852px;
+}
+.titlebar-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-base-white);
+    width: 393px;
+    height: 118px;
+}
+.payment {
+    position: absolute;
+    top: 90px;
+    left: 143.1px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+}
+.arrow-chevron-left {
+    position: absolute;
+    top: 90px;
+    left: 7px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    opacity: 0.7;
+}
+.titlebar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 393px;
+    height: 118px;
+    text-align: center;
+    font-size: 18px;
+}
+.pay-using-apps {
+    position: relative;
+    font-weight: 600;
+}
+.frame-child {
+    width: 25px;
+    height: 24px;
+    object-fit: cover;
+}
+.you-will-be {
+    position: relative;
+}
+.frame-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+}
+.frame-item {
+    width: 73px;
+    position: relative;
+    border-radius: var(--br-9xs);
+    border: 2px solid var(--color-lightgray);
+    box-sizing: border-box;
+    height: 73px;
+    z-index: 0;
+}
+.image-1-icon {
+    width: 75.34%;
+    position: absolute;
+    margin: 0 !important;
+    height: 75.34%;
+    top: 12.33%;
+    right: 12.33%;
+    bottom: 12.33%;
+    left: 12.33%;
+    border-radius: var(--br-9xs);
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.rectangle-parent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    gap: var(--gap-3xs);
+}
+.phonepe {
+    position: relative;
+    font-weight: 500;
+}
+.frame-parent1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-9xs);
+}
+.image-10-icon {
+    width: 75.34%;
+    position: absolute;
+    margin: 0 !important;
+    height: 64.11%;
+    top: 17.81%;
+    right: 12.33%;
+    bottom: 18.08%;
+    left: 12.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.google {
+    margin: 0;
+}
+.frame-parent2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap-9xs);
+    text-align: center;
+}
+.image-11-icon {
+    width: 75.34%;
+    position: absolute;
+    margin: 0 !important;
+    height: 29.86%;
+    top: 34.25%;
+    right: 12.33%;
+    bottom: 35.89%;
+    left: 12.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+.frame-div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.frame-icon {
+    width: 24px;
+    height: 24px;
+}
+.pay-with-other {
+    width: 240px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.frame-child1 {
+    width: 27px;
+    height: 27px;
+}
+.frame-parent4 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-base);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+}
+.frame-group {
+    width: 352px;
+    border: 1px solid #c8c7c7;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-5xs) var(--padding-base);
+    gap: 24px;
+    font-size: var(--font-size-xs);
+}
+.pay-using-apps-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+}
+.you-will-receive {
+    width: 296px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.frame-parent5 {
+    width: 353px;
+    border: 1px solid var(--color-gainsboro);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-5xs) var(--padding-base);
+    gap: var(--gap-base);
+    text-align: left;
+    font-size: var(--font-size-xs);
+}
+.pay-with-upi-id-mobile-number-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    text-align: center;
+}
+.frame-parent {
+    position: absolute;
+    top: 170px;
+    left: 20px;
+    height: 391px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+}
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    line-height: 150%;
+}
+.black-icon {
+    position: absolute;
+    height: 69.44%;
+    width: 11.98%;
+    top: 0%;
+    right: 88.02%;
+    bottom: 30.56%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 167px;
+    height: 36px;
+    font-size: 24px;
+    color: var(--color-brand-green);
+    font-family: var(--font-hawthorne-vintage);
+}
+.app-or-upi-child {
+    position: absolute;
+    top: 647px;
+    left: calc(50% - 196.5px);
+    box-shadow: 0px -8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: var(--br-base) var(--br-base) 0px 0px;
+    background-color: #f8f9fb;
+    width: 393px;
+    height: 205px;
+}
+.view-price-details {
+    position: relative;
+    font-size: var(--font-size-3xs);
+    text-decoration: underline;
+    text-align: right;
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: var(--gap-9xs);
+}
+.total-payment-parent {
+    width: 353px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 137px;
+}
+.large {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 600;
+}
+.vector-icon {
+    position: absolute;
+    height: 50%;
+    width: 25%;
+    top: 25%;
+    right: 37.5%;
+    bottom: 25%;
+    left: 37.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.system-icons {
+    
+    position: relative;
+   
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.buttons {
+    width: 353px;
+    border-radius: 12px;
+    background-color: #48cb66;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    gap: 8px;
+    font-size: 20px;
+    color: var(--color-base-white);
+}
+.frame-parent8 {
+    position: absolute;
+    top: 682px;
+    left: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+}
+.secured-by-256-bit {
+    position: absolute;
+    top: 815px;
+    left: calc(50% - 82.5px);
+    font-size: var(--font-size-3xs);
+    color: #898989;
+}
+.choose-a-payment {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    font-weight: 600;
+}
+.cash-on-delivery {
+    width: 283px;
+    position: relative;
+    white-space: pre-wrap;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.cash-on-delivery-parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-base);
+    cursor: pointer;
+}
+.app-or-upi-inner {
+    position: absolute;
+    top: 571px;
+    left: 20px;
+    border: 1px solid var(--color-gainsboro);
+    box-sizing: border-box;
+    width: 353px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-5xs) var(--padding-base);
+    font-size: var(--font-size-sm);
+}
+.app-or-upi {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-base-white);
+    height: 852px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+    font-family: var(--font-montserrat);
+}
+
+/* Disabled state styles */
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.disabled .frame-group,
+.disabled .frame-parent5 {
+    border-color: #e0e0e0;
+    background-color: #f5f5f5;
+}
+
+.disabled img {
+    filter: grayscale(50%);
+}
+
+.disabled .pay-using-apps,
+.disabled .phonepe,
+.disabled .you-will-be,
+.disabled .you-will-receive {
+    color: #666;
+}
+
+
+
+/* Adjust existing COD styles */
+.app-or-upi-inner {
+    border-radius: 8px;
+}/* Selected COD style */

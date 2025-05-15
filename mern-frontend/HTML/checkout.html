@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .checkout-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .address-section {
+      background: #f9f9f9;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+    .add-address-btn {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .address-cards-container {
+      display: grid;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .address-card {
+      background: white;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .address-card.selected {
+      border-color: green;
+      background-color: #f0fff0;
+    }
+    .no-address-message {
+      text-align: center;
+      color: #666;
+      padding: 20px;
+    }
+    .cart-summary {
+      margin-top: 30px;
+      background: #f1f1f1;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .total {
+      text-align: right;
+      font-size: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .place-order-btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .place-order-btn:hover {
+      background-color: darkgreen;
+    }
+    .error-message {
+      color: red;
+      text-align: center;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div class="address-section">
+      <h2>Select Delivery Address</h2>
+      <button class="add-address-btn" onclick="window.location.href='../HTML/AddAddress.html'">
+        Add New Address
+      </button>
+      <div id="address-cards" class="address-cards-container"></div>
+      <div id="no-address" class="no-address-message" style="display: none;">
+        No saved addresses found. Please add a new address.
+      </div>
+    </div>
+
+    <div class="cart-summary" id="cart-summary">
+      <h2>Order Summary</h2>
+      <div id="cart-items"></div>
+      <div class="total" id="cart-total"></div>
+      <button class="place-order-btn" onclick="continueToPayment()">Continue 🚀</button>
+      <div id="error-message" class="error-message"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:5000/api';
+    let cartItems = [];
+    let cartTotal = 0;
+    let selectedAddress = null;
+
+    async function verifyAndRefreshToken() {
+      let authToken = localStorage.getItem('authToken');
+      let refreshToken = localStorage.getItem('refreshToken');
+
+      if (!authToken || !refreshToken) {
+        redirectToLogin();
+        throw new Error('Missing authentication tokens');
+      }
+
+      try {
+        const verifyResponse = await fetch(`${API_BASE}/auth/verify`, {
+          headers: { Authorization: `Bearer ${authToken}` },
+        });
+
+        if (!verifyResponse.ok) throw new Error('Token verification failed');
+        return authToken;
+      } catch {
+        const refreshed = await fetch(`${API_BASE}/auth/refresh`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ refreshToken }),
+        });
+
+        if (!refreshed.ok) {
+          redirectToLogin();
+          throw new Error('Unable to refresh token');
+        }
+
+        const data = await refreshed.json();
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        return data.token;
+      }
+    }
+
+    async function authenticatedFetch(url, options = {}) {
+      const token = await verifyAndRefreshToken();
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        ...options.headers,
+      };
+      return fetch(url, { ...options, headers });
+    }
+
+    async function loadCart() {
+      try {
+        const response = await authenticatedFetch(`${API_BASE}/cart`);
+        if (!response.ok) throw new Error('Failed to load cart');
+        const data = await response.json();
+        cartItems = data.items || [];
+        cartTotal = 0;
+        renderCartSummary(cartItems);
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    async function loadAddresses() {
+      try {
+        const response = await authenticatedFetch(`${API_BASE}/addresses`);
+        if (!response.ok) throw new Error('Failed to load addresses');
+        const addresses = await response.json();
+        
+        const addressContainer = document.getElementById('address-cards');
+        const noAddressMessage = document.getElementById('no-address');
+
+        if (addresses.length > 0) {
+          noAddressMessage.style.display = 'none';
+          addressContainer.innerHTML = addresses.map(address => `
+            <div class="address-card" 
+                 data-address-id="${address._id}" 
+                 onclick='selectAddress(${JSON.stringify(address)})'>
+              <h3>${address.name}</h3>
+              <p>${address.address}</p>
+              <p>${address.city}, ${address.pincode}</p>
+              <p>Phone: ${address.phone}</p>
+            </div>
+          `).join('');
+        } else {
+          noAddressMessage.style.display = 'block';
+          addressContainer.innerHTML = '';
+        }
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    function selectAddress(address) {
+      selectedAddress = address;
+      document.querySelectorAll('.address-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      const selectedCard = document.querySelector(`[data-address-id="${address._id}"]`);
+      if (selectedCard) {
+        selectedCard.classList.add('selected');
+      }
+    }
+
+    function renderCartSummary(items) {
+      const cartItemsDiv = document.getElementById('cart-items');
+      const cartTotalDiv = document.getElementById('cart-total');
+
+      cartItemsDiv.innerHTML = '';
+      cartTotal = 0;
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <span>${item.name} (${item.size}) x ${item.quantity}</span>
+          <span>₹${item.price * item.quantity}</span>
+        `;
+        cartItemsDiv.appendChild(div);
+        cartTotal += item.price * item.quantity;
+      });
+
+      cartTotalDiv.textContent = `Total: ₹${cartTotal}`;
+    }
+
+    function continueToPayment() {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = '';
+
+      if (!selectedAddress) {
+        showError('Please select an address');
+        return;
+      }
+
+      localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
+      window.location.href = '../HTML/AppUPI.html';
+    }
+
+    function showError(message) {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = message;
+    }
+
+    function redirectToLogin() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('refreshToken');
+      window.location.href = '../HTML/login.html';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      verifyAndRefreshToken()
+        .then(() => Promise.all([loadCart(), loadAddresses()]))
+        .catch(() => redirectToLogin());
+    });
+  </script>
+</body>
+</html>

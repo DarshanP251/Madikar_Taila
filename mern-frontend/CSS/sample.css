@@ -1,0 +1,101 @@
+.label {
+    position: relative;
+    font-size: var(--font-size-sm);
+    z-index: 0;
+}
+.selected-option {
+    position: relative;
+}
+.text-wrap {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.keyboard-arrow-up {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.form {
+    align-self: stretch;
+    border-radius: var(--br-5xs);
+    background-color: var(--color-base-white);
+    border: 2px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px var(--padding-xs);
+    gap: 8px;
+    z-index: 1;
+}
+.text-wrap1 {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.dropdown-item {
+    align-self: stretch;
+    background-color: var(--color-base-white);
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px var(--padding-xs);
+    box-sizing: border-box;
+}
+.drowdown-list {
+    width: 100%;
+    margin: 0 !important;
+    position: absolute;
+    top: 77px;
+    right: 0px;
+    left: 0px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    border-radius: var(--br-5xs);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 2;
+    color: var(--color-blueviolet);
+}
+.input {
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    width: 173px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.sample {
+    width: 217px;
+    position: relative;
+    border-radius: var(--br-xs);
+    background: linear-gradient(180.06deg, var(--color-base-white), var(--color-lightgreen));
+    height: 310px;
+    overflow: hidden;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-base-black);
+    font-family: var(--font-inter);
+}
+

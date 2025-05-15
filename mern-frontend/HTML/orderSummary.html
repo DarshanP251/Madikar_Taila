@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<link rel="stylesheet" href="../CSS/global.css" />
+	<link rel="stylesheet" href="../CSS/orderSummary.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne Vintage:wght@400&display=swap" />
+
+</head>
+
+<body>
+	<div class="checkout">
+		<div class="checkout-header"></div>
+		<a href="../HTML/EmptyCart.html" class="cart-link">
+			<img class="arrow-chevron-left" alt="" src="../SRC/Chevron_Left.svg">
+		</a>
+		<div class="order-summary">Order Summary</div>
+
+		<!-- Cart Items Container -->
+		<div class="cart-items-container" id="cart-items-container"></div>
+
+		<!-- Address Section -->
+		<div class="address-section">
+			<div class="section-header">
+				<div class="shipping-to">Shipping to</div>
+				<div class="edit-button" id="edit-address">
+					<div class="small">Edit</div>
+				</div>
+			</div>
+			<div class="address-content-wrapper">
+				<div id="selected-address" class="address-content"></div>
+			</div>
+		</div>
+
+		<!-- Contact Section -->
+		<div class="contact-section">
+			<div class="section-header">
+				<div class="shipping-to">Contact no.</div>
+				<div class="edit-button" id="edit-contact">
+					<div class="small">Edit</div>
+				</div>
+			</div>
+			<div class="contact-content">
+				<div id="contact-number" class="contact-number"></div>
+			</div>
+		</div>
+
+		<div class="logo">
+			<div class="madikar-taila">Madikar Taila</div>
+			<img class="brand-icon" alt="" src="../SRC/drop.svg">
+		</div>
+
+		<!-- Pricing Section -->
+		<div class="pricing-section">
+			<div class="pricing-background"></div>
+			<div class="price-row">
+				<div class="price-label">Subtotal</div>
+				<div id="subtotal" class="price-value">₹0/-</div>
+			</div>
+			<div class="price-row">
+				<div class="price-label">Delivery</div>
+				<div id="delivery-charge" class="price-value">₹80/-</div>
+			</div>
+			<div class="price-row total-row">
+				<div class="price-label">Total</div>
+				<div id="total" class="price-value">₹0/-</div>
+			</div>
+			<div class="place-order-btn" id="startShoppingContainer">
+				<div class="proceed-to-pay">Place Your Order</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const API_BASE_URL = 'http://localhost:5000/api';
+		let cartItems = [];
+		let selectedAddress = null;
+
+		async function loadCartItems() {
+			try {
+				const token = localStorage.getItem('authToken');
+				if (!token) {
+					window.location.href = '../HTML/login.html';
+					return;
+				}
+
+				const response = await fetch(`${API_BASE_URL}/cart`, {
+					headers: { Authorization: `Bearer ${token}` }
+				});
+
+				if (!response.ok) throw new Error('Failed to load cart');
+				const data = await response.json();
+				cartItems = data.items || [];
+				renderCartItems();
+				calculateTotals();
+			} catch (error) {
+				console.error('Error loading cart:', error);
+			}
+		}
+
+		function renderCartItems() {
+			const container = document.getElementById('cart-items-container');
+			container.innerHTML = '';
+
+			cartItems.forEach(item => {
+				const itemElement = document.createElement('div');
+				itemElement.className = 'cart-item';
+				itemElement.innerHTML = `
+                    <img class="dsc00197-2-icon" alt="${item.name}" src="${item.image}">
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">Qty ${item.quantity} • ${item.size}</div>
+                    </div>
+                    <div class="item-price">₹${item.price * item.quantity}/-</div>
+                `;
+				container.appendChild(itemElement);
+			});
+		}
+
+		function loadAddress() {
+			const storedAddress = localStorage.getItem('selectedAddress');
+			if (storedAddress) {
+				selectedAddress = JSON.parse(storedAddress);
+				const addressElement = document.getElementById('selected-address');
+				addressElement.innerHTML = `
+                <p class="address-line">${selectedAddress.name}</p>
+                <p class="address-line">${selectedAddress.address}</p>
+                <p class="address-line">${selectedAddress.city}, ${selectedAddress.state} - ${selectedAddress.pincode}</p>
+            `;
+				document.getElementById('contact-number').textContent = selectedAddress.phone;
+			}
+		}
+
+		function calculateTotals() {
+			const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+			const total = subtotal + 80;
+
+			document.getElementById('subtotal').textContent = `₹${subtotal}/-`;
+			document.getElementById('total').textContent = `₹${total}/-`;
+		}
+
+		// Edit button handlers
+		document.getElementById('edit-address').addEventListener('click', () => {
+			window.location.href = '../HTML/AddAddress.html';
+		});
+
+		document.getElementById('edit-contact').addEventListener('click', () => {
+			window.location.href = '../HTML/AddAddress.html';
+		});
+
+		// Initialize on load
+		document.addEventListener('DOMContentLoaded', () => {
+			loadCartItems();
+			loadAddress();
+		});
+
+		// Place Order Handler
+		document.getElementById('startShoppingContainer').addEventListener('click', () => {
+			window.location.href = '../HTML/finalpage.html';
+		});
+	</script>
+</body>
+
+</html>

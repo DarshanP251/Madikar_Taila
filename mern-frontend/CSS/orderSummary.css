@@ -1,0 +1,232 @@
+:root {
+    --Primary-Base-White: #FFFFFF;
+    --color-brand-green: #48cb66;
+    --color-grey-Color-4: #828282;
+    --color-grey-Color-5: #333333;
+    --Grey-Scale-Black-05: rgba(0, 0, 0, 0.05);
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-hawthorne: 'Hawthorne Vintage', sans-serif;
+}
+
+.checkout {
+    position: relative;
+    background-color: #f4f5f9;
+    min-height: 100vh;
+    padding: 100px 20px 200px;
+    font-family: var(--font-montserrat);
+}
+
+.checkout-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 118px;
+    background: var(--Primary-Base-White);
+    z-index: 10;
+}
+
+.order-summary {
+    position: fixed;
+    top: 94px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    z-index: 11;
+}
+
+.cart-link {
+    position: fixed;
+    top: 93px;
+    left: 20px;
+    z-index: 11;
+}
+
+/* Cart Items Styles */
+.cart-items-container {
+    position: relative;
+    margin: 130px auto 20px;
+    width: 100%;
+    max-width: 350px;
+    background: var(--Primary-Base-White);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.dsc00197-2-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.item-details {
+    color: var(--color-grey-Color-4);
+    font-size: 0.9rem;
+}
+
+.item-price {
+    font-weight: 600;
+}
+
+/* Address Section */
+.address-section,
+.contact-section {
+    background: var(--Primary-Base-White);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 350px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.edit-button {
+    color: var(--color-brand-green);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.address-content {
+    color: var(--color-grey-Color-4);
+    line-height: 1.4;
+}
+
+/* Pricing Section */
+.pricing-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--Grey-Scale-Black-05);
+    padding: 20px;
+    box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.total-row {
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.place-order-btn {
+    background: var(--color-brand-green);
+    color: var(--Primary-Base-White);
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Logo Styles */
+.logo {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-hawthorne);
+    font-size: 1.5rem;
+    color: var(--color-brand-green);
+    z-index: 11;
+}
+
+.brand-icon {
+    height: 36px;
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.save-btn {
+    background: var(--color-brand-green);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}

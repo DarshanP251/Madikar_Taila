@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="../CSS/get-started.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne+Vintage:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+  <title>Login | Madikar Taila</title>
+</head>
+<body>
+  <div class="iphone-14-15-pro-3">
+    <div class="logo">
+      <div class="madikar-taila">Madikar Taila</div>
+      <img class="black-icon" alt="" src="../SRC/drop.svg">
+    </div>
+
+    <div class="login-to-your-container">
+      <p class="login-to-your">Login to your</p>
+      <p class="login-to-your">existing account</p>
+    </div>
+
+    <div class="email-address">
+      <input type="email" id="emailInput" placeholder="Email" class="contact-inputs" required autocomplete="off">
+    </div>
+    <div class="password">
+      <input type="password" id="passwordInput" placeholder="Password" class="contact-inputs" required autocomplete="off">
+    </div>
+
+    <button type="button" id="signInContainer" class="continue2">
+      <div class="medium">Continue</div>
+    </button>
+
+    <div class="dont-have-an">Don’t have an account? <a href="../HTML/get-started.html">Sign Up</a></div>
+
+    <div class="line-div"></div>
+
+    <div class="or">OR</div>
+
+    <div class="log-in-with-google">
+      <img class="social-icons" alt="" src="../SRC/Social Icons.svg">
+      <div class="sign-in-with">Log in with Google</div>
+    </div>
+
+    <div class="show-password">
+      <input type="checkbox" id="show-password-checkbox">
+      <label class="small" for="show-password-checkbox">Show password</label>
+    </div>
+
+    <div class="forgot-password">
+      <a href="../HTML/forgot-password.html" class="small">Forgot password?</a>
+    </div>
+  </div>
+
+  <script>
+    const signInBtn = document.getElementById("signInContainer");
+    const emailInput = document.getElementById("emailInput");
+    const passwordInput = document.getElementById("passwordInput");
+    const showPasswordCheckbox = document.getElementById("show-password-checkbox");
+
+    // Toggle password visibility
+    showPasswordCheckbox.addEventListener("change", () => {
+      passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+    });
+
+    // Submit with Enter key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        signInBtn.click();
+      }
+    });
+
+    // Login function
+    signInBtn.addEventListener("click", async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      signInBtn.disabled = true;
+      signInBtn.innerText = "Logging in...";
+
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem("authToken", data.token);
+          localStorage.setItem("userId", data.userId);
+          localStorage.setItem("refreshToken", data.refreshToken); // THIS WAS MISSING
+
+          alert("Login successful!");
+          window.location.href = "../HTML/home1.html";
+        } else {
+          alert(data.error || "Login failed.");
+        }
+      } catch (err) {
+        alert("Something went wrong. Please try again.");
+        console.error(err);
+      } finally {
+        signInBtn.disabled = false;
+        signInBtn.innerText = "Continue";
+      }
+    });
+
+    // Example use of token for fetching user cart
+    async function fetchUserCart() {
+      const token = localStorage.getItem("authToken");
+      if (!token) return;
+
+      try {
+        const res = await fetch("http://localhost:5000/api/cart", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        const cartData = await res.json();
+        // Process cart data...
+      } catch (err) {
+        console.error("Error fetching cart:", err);
+      }
+    }
+  </script>
+</body>
+</html>

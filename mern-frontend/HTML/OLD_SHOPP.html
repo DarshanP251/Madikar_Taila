@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="initial-scale=1, width=device-width">
+  	
+  	
+  	<link rel="stylesheet" href="../CSS/global.css" />
+  	<link rel="stylesheet"  href="../CSS/Shopp.css" />
+
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne Vintage:wght@400&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF Pro Display:wght@500&display=swap" />
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF Pro Text:wght@400&display=swap" />
+  	
+  	
+  	
+</head>
+<body>
+  	
+  	<div class="shop">
+    		<div class="logo" data-scroll-to="lOGOContainer">
+      			<div class="madikar-taila">Madikar Taila</div>
+      			<img class="black-icon" alt="" src="../SRC/drop.svg">
+      			
+    		</div>
+    		<div class="nav-bar">
+      			<div class="background">
+      			</div>
+      			<div class="buttons" id="buttonsContainer">
+        				<div class="medium">Shop</div>
+      			</div>
+      			<div class="buttons1" id="buttonsContainer1">
+        				<div class="medium">About</div>
+      			</div>
+      			<img class="magnifier-icon" alt="" src="../SRC/Magnifier.png" id="magnifierIcon">
+      			
+      			<div class="buttons2" id="buttonsContainer2">
+        				<div class="medium">Home</div>
+      			</div>
+    		</div>
+    		<div class="buttons3" id="catContainer">
+      			<div class="medium3">Shop by Category</div>
+      			<img class="system-icons" alt="" src="../SRC/Hamburger.svg">
+      			
+    		</div>
+    		<div class="cart-icon" id="cartIconContainer">
+      			<div class="cart-icon-child">
+      			</div>
+      			<img class="shopping-bag-icon"  id="cartNavigate" alt="" src="../SRC/Shopping bag.png">
+      			
+    		</div>
+    		<div class="groundnut-oil-card" >
+      			<img class="groundnut-oil-card-child" alt="" src="../SRC/Rectangle 6.png">
+      			
+      			<div class="item-description">Cold-pressed groundnut oil is a nutrient-rich, natural oil with a mild nutty aroma, ideal for healthy cooking.</div>
+      			<div class="add-to-cart" id="addcart">
+        				<div class="small">Add to cart</div>
+      			</div>
+      			<div class="groundnut-oil-parent">
+        				<b class="groundnut-oil" >Groundnut Oil</b>
+        				<b class="b">325/-</b>
+      			</div>
+      			<img class="dsc00197-1-icon" id="groundnutOilCard1" alt="" src="../SRC/DSC00197 1.png">
+      			
+      			<div class="buttons4" id="selectyQTY1">
+        				<div class="medium4">Select Qty</div>
+        				<img class="system-icons" alt="" src="../SRC/System Icons.svg">
+        				
+      			</div>
+    		</div>
+    		<div class="coconut-oil-card">
+      			<img class="groundnut-oil-card-child" alt="" src="../SRC/Rectangle 6.png">
+      			
+      			<div class="item-description1">Cold-pressed coconut oil is a natural, nutrient-rich oil with a light tropical aroma, perfect for healthy cooking and skincare.</div>
+      			<div class="add-to-cart">
+        				<div class="small">Add to cart</div>
+      			</div>
+      			<div class="groundnut-oil-parent">
+        				<b class="groundnut-oil">Coconut Oil</b>
+        				<b class="b">325/-</b>
+      			</div>
+      			<img class="dsc00229-1-icon" alt="" src="../SRC/DSC00229 1.png">
+      			
+      			<div class="buttons4" id="selectyQTY2">
+        				<div class="medium4">Select Qty</div>
+        				<img class="system-icons" alt="" src="../SRC/System Icons.svg">
+        				
+      			</div>
+    		</div>
+    		<div class="coconut-oil-card1">
+      			<img class="groundnut-oil-card-child" alt="" src="../SRC/Rectangle 6.png">
+      			
+      			<div class="item-description2">Cold-pressed safflower oil is a mild, nutrient-rich oil that supports heart health and nourishes skin.</div>
+      			<div class="add-to-cart">
+        				<div class="small">Add to cart</div>
+      			</div>
+      			<div class="groundnut-oil-parent">
+        				<b class="groundnut-oil">Safflower Oil</b>
+        				<b class="b">345/-</b>
+      			</div>
+      			<img class="dsc00229-1-icon" alt="" src="../SRC/DSC00229 2.png">
+      			
+      			<div class="buttons4" id="selectyQTY3">
+        				<div class="medium4">Select Qty</div>
+        				<img class="system-icons" alt="" src="../SRC/System Icons.svg">
+        				
+      			</div>
+    		</div>
+  	</div>
+  	
+  	<div id="searchBarContainer" class="popup-overlay" style="display:none">
+    		
+    		<div class="searchbar">
+      			<div class="content">
+        				<div class="magnifyingglass">
+          					<div class="magnifyingglass1">􀊫</div>
+        				</div>
+        				<div class="placeholder-label">
+          					<span>|</span>
+          					<span class="search">Search</span>
+        				</div>
+      			</div>
+    		</div>
+    		
+    		
+  	</div>
+  	
+  	<div id="categoryPopUp" class="popup-overlay" style="display:none">
+    		
+    		<div class="category-pop-up">
+      			<div class="shop-by-categories">Shop By Categories</div>
+      			<div class="category-pop-up-inner" id="popupgroupContainer">
+        				<div class="category-slides-wrapper">
+          					<div class="category-slides">
+            						<div class="essential-oil">Essential Oil</div>
+            						<img class="essential-oil-icon" alt="" src="../SRC/Essential oil.png">
+            						
+          					</div>
+        				</div>
+      			</div>
+      			<div class="category-pop-up-child" id="popupgroupContainer1">
+        				<div class="category-slides-container">
+          					<div class="category-slides1">
+            						<div class="cooking-oil">Cooking Oil</div>
+            						<img class="olive-oil-icon" alt="" src="../SRC/Olive oil.png">
+            						
+          					</div>
+        				</div>
+      			</div>
+      			<div class="group-div" id="popupgroupContainer2">
+        				<div class="category-slides-container">
+          					<div class="category-slides1">
+            						<div class="hair-oil">Hair Oil</div>
+            						<img class="coconut-oil-icon" alt="" src="../SRC/Coconut oil.png">
+            						
+          					</div>
+        				</div>
+      			</div>
+    		</div>
+    		
+    		
+  	</div>
+	
+	  <div id="sampleContainer" class="popup-overlay" style="display:none">
+    		
+		<div class="sample">
+			  <div class="input">
+					<div class="label">Edible Oils</div>
+					<div class="form">
+						  <div class="text-wrap">
+								<div class="selected-option">Select quantity</div>
+						  </div>
+						  <img class="keyboard-arrow-up" alt="" src="../SRC/DownArrow.svg">
+						  
+					</div>
+					<div class="drowdown-list">
+						  <div class="dropdown-item">
+								<div class="text-wrap1">
+									  <div class="selected-option">500ml</div>
+								</div>
+						  </div>
+						  <div class="dropdown-item">
+								<div class="text-wrap1">
+									  <div class="selected-option">1 Ltr</div>
+								</div>
+						  </div>
+						  <div class="dropdown-item">
+								<div class="text-wrap1">
+									  <div class="selected-option">2 Ltr</div>
+								</div>
+						  </div>
+						  <div class="dropdown-item">
+								<div class="text-wrap1">
+									  <div class="selected-option">5 Ltr</div>
+								</div>
+						  </div>
+					</div>
+			  </div>
+		</div>
+	  </div>
+  	<script>
+		var popupgroupContainer = document.getElementById("popupgroupContainer");
+		if(popupgroupContainer) {
+			  popupgroupContainer.addEventListener("click", function (e) {
+					window.location.href = "../HTML/CategoryEssential.html";
+			  });
+		}
+		
+		
+		var popupgroupContainer1 = document.getElementById("popupgroupContainer1");
+		if(popupgroupContainer1) {
+			  popupgroupContainer1.addEventListener("click", function (e) {
+				window.location.href = "../HTML/CategoryCooking.html";
+
+			  });
+		}
+		
+		var popupgroupContainer2 = document.getElementById("popupgroupContainer2");
+		if(popupgroupContainer2) {
+			  popupgroupContainer2.addEventListener("click", function (e) {
+				window.location.href = "../HTML/CategoryHairOil.html";
+
+			  });
+		}
+		
+		var buttonsContainer = document.getElementById("buttonsContainer");
+		if(buttonsContainer) {
+			  buttonsContainer.addEventListener("click", function () {
+					var anchor = document.querySelector("[data-scroll-to='lOGOContainer']");
+					if(anchor) {
+						  anchor.scrollIntoView({"block":"start","behavior":"smooth"})
+					}
+			  });
+		}
+		
+		
+		var buttonsContainer1 = document.getElementById("buttonsContainer1");
+		if(buttonsContainer1) {
+			  buttonsContainer1.addEventListener("click", function (e) {
+					window.location.href = "../HTML/AboutUs.html";
+			  });
+		}
+		
+		var magnifierIcon = document.getElementById("magnifierIcon");
+		if(magnifierIcon) {
+			  magnifierIcon.addEventListener("click", function () {
+					var popup = document.getElementById("searchBarContainer");
+					if(!popup) return;
+					var popupStyle = popup.style;
+					if(popupStyle) {
+						  popupStyle.display = "flex";
+						  popupStyle.zIndex = 100;
+						  popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+						  popupStyle.alignItems = "center";
+						  popupStyle.justifyContent = "center";
+					}
+					popup.setAttribute("closable", "");
+					
+					var onClick = popup.onClick || function(e) {
+						  if(e.target === popup && popup.hasAttribute("closable")) {
+								popupStyle.display = "none";
+						  }
+					};
+					popup.addEventListener("click", onClick);
+			  });
+		}
+		
+		var buttonsContainer2 = document.getElementById("buttonsContainer2");
+		if(buttonsContainer2) {
+			  buttonsContainer2.addEventListener("click", function (e) {
+					window.location.href = "../HTML/Home.html";
+			  });
+		}
+		
+		var catContainer = document.getElementById("catContainer");
+		if(catContainer) {
+			catContainer.addEventListener("click", function () {
+					var popup = document.getElementById("categoryPopUp");
+					if(!popup) return;
+					var popupStyle = popup.style;
+					if(popupStyle) {
+						  popupStyle.display = "flex";
+						  popupStyle.zIndex = 100;
+						  popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+						  popupStyle.alignItems = "center";
+						  popupStyle.justifyContent = "center";
+					}
+					popup.setAttribute("closable", "");
+					
+					var onClick = popup.onClick || function(e) {
+						  if(e.target === popup && popup.hasAttribute("closable")) {
+								popupStyle.display = "none";
+						  }
+					};
+					popup.addEventListener("click", onClick);
+			  });
+		}
+		
+		var cartIconContainer = document.getElementById("cartIconContainer");
+		if(cartIconContainer) {
+			  cartIconContainer.addEventListener("click", function (e) {
+				window.location.href = "../HTML/EmptyCart.html";
+			  });
+		}
+		
+		var groundnutOilCard = document.getElementById("groundnutOilCard");
+		if(groundnutOilCard) {
+			  groundnutOilCard.addEventListener("click", function (e) {
+				window.location.href = "../HTML/ProductDetail.html";
+			  });
+		}
+		var addcart = document.getElementById("addcart");
+		if(addcart) {
+			addcart.addEventListener("click", function (e) {
+				window.location.href = "../HTML/AppUPI.html";
+			  });
+		}
+		//Select QTY
+		var selectyQTY1 = document.getElementById("selectyQTY1");
+    		if(selectyQTY1) {
+				selectyQTY1.addEventListener("click", function () {
+        				var popup = document.getElementById("sampleContainer");
+        				if(!popup) return;
+        				var popupStyle = popup.style;
+        				if(popupStyle) {
+          					popupStyle.display = "flex";
+          					popupStyle.zIndex = 100;
+          					popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+          					popupStyle.alignItems = "center";
+          					popupStyle.justifyContent = "center";
+        				}
+        				popup.setAttribute("closable", "");
+        				
+        				var onClick = popup.onClick || function(e) {
+          					if(e.target === popup && popup.hasAttribute("closable")) {
+            						popupStyle.display = "none";
+          					}
+        				};
+        				popup.addEventListener("click", onClick);
+      			});
+    		}
+			var selectyQTY2 = document.getElementById("selectyQTY2");
+    		if(selectyQTY2) {
+				selectyQTY2.addEventListener("click", function () {
+        				var popup = document.getElementById("sampleContainer");
+        				if(!popup) return;
+        				var popupStyle = popup.style;
+        				if(popupStyle) {
+          					popupStyle.display = "flex";
+          					popupStyle.zIndex = 100;
+          					popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+          					popupStyle.alignItems = "center";
+          					popupStyle.justifyContent = "center";
+        				}
+        				popup.setAttribute("closable", "");
+        				
+        				var onClick = popup.onClick || function(e) {
+          					if(e.target === popup && popup.hasAttribute("closable")) {
+            						popupStyle.display = "none";
+          					}
+        				};
+        				popup.addEventListener("click", onClick);
+      			});
+    		}
+			var selectyQTY3 = document.getElementById("selectyQTY3");
+    		if(selectyQTY3) {
+				selectyQTY3.addEventListener("click", function () {
+        				var popup = document.getElementById("sampleContainer");
+        				if(!popup) return;
+        				var popupStyle = popup.style;
+        				if(popupStyle) {
+          					popupStyle.display = "flex";
+          					popupStyle.zIndex = 100;
+          					popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+          					popupStyle.alignItems = "center";
+          					popupStyle.justifyContent = "center";
+        				}
+        				popup.setAttribute("closable", "");
+        				
+        				var onClick = popup.onClick || function(e) {
+          					if(e.target === popup && popup.hasAttribute("closable")) {
+            						popupStyle.display = "none";
+          					}
+        				};
+        				popup.addEventListener("click", onClick);
+      			});
+    		}
+		
+		
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+.shop-by-categories {
+    position: absolute;
+    top: 41px;
+    left: calc(50% - 160px);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-grey-Color-5);
+}
+.essential-oil {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - 73px);
+}
+.essential-oil-icon {
+    position: absolute;
+    top: 18px;
+    left: 42px;
+    width: 42px;
+    height: 45px;
+    object-fit: cover;
+}
+.category-slides {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 160px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-darkseagreen);
+    width: 320px;
+    height: 80px;
+    overflow: hidden;
+}
+.category-slides-wrapper {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 160px);
+    width: 320px;
+    height: 80px;
+}
+.category-pop-up-inner {
+    position: absolute;
+    top: 85px;
+    left: calc(50% - 160px);
+    width: 320px;
+    height: 80px;
+    cursor: pointer;
+}
+.cooking-oil {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - 70px);
+}
+.olive-oil-icon {
+    position: absolute;
+    top: 18px;
+    left: 37px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+.category-slides1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-xs);
+    background-color: var(--color-darkseagreen);
+    width: 320px;
+    height: 80px;
+    overflow: hidden;
+}
+.category-slides-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 320px;
+    height: 80px;
+}
+.category-pop-up-child {
+    position: absolute;
+    top: 185px;
+    left: 15px;
+    width: 320px;
+    height: 80px;
+    cursor: pointer;
+}
+.hair-oil {
+    position: absolute;
+    top: 21px;
+    left: calc(50% - 45px);
+}
+.coconut-oil-icon {
+    position: absolute;
+    top: 15px;
+    left: 50px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+.group-div {
+    position: absolute;
+    top: 285px;
+    left: 15px;
+    width: 320px;
+    height: 80px;
+    cursor: pointer;
+}
+.category-pop-up {
+    width: 350px;
+    position: relative;
+    border-radius: 20px;
+    background-color: var(--color-grey-Color);
+    height: 405px;
+    overflow: hidden;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: left;
+    font-size: var(--font-size-5xl);
+    color: var(--color-grey-Color-4);
+    font-family: var(--font-montserrat);
+}
+

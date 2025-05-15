@@ -1,0 +1,754 @@
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 13.17%;
+    line-height: 150%;
+}
+.black-icon {
+    position: absolute;
+    width: 11.98%;
+    top: 0px;
+    right: 88.02%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 25px;
+}
+.logo1 {
+    position: absolute;
+    width: 42.49%;
+    top: 0px;
+    right: 49.87%;
+    left: 7.63%;
+    height: 36px;
+}
+
+.categories {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 600;
+    display: inline-block;
+    width: 104.3px;
+}
+.cattitle {
+    position: absolute;
+    top: 0px;
+    left: 1px;
+    width: 104.3px;
+    height: 22px;
+}
+.group-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: var(--color-honeydew);
+    width: 52px;
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: auto;
+    height: 52px;
+}
+.cooking {
+    margin: 0;
+}
+.cooking-oil {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+}
+.cooking-oil-wrapper {
+    position: absolute;
+    top: 63px;
+    left: 3px;
+    width: 46px;
+    height: 24px;
+}
+.ellipse-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 52px;
+    height: 87px;
+    cursor: pointer;
+    font-family: var(--font-montserrat);
+}
+.essential-oil-wrapper {
+    position: absolute;
+    top: 63px;
+    left: 4px;
+    width: 45px;
+    height: 30px;
+}
+.ellipse-group {
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    width: 52px;
+    height: 93px;
+    cursor: pointer;
+}
+.hair-oil-wrapper {
+    position: absolute;
+    top: 63px;
+    left: 14px;
+    width: 23px;
+    height: 30px;
+}
+.ellipse-container {
+    position: absolute;
+    top: 0px;
+    left: 142px;
+    width: 52px;
+    height: 93px;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+
+}
+.catitems {
+    position: absolute;
+    top: 27px;
+    left: 0px;
+    width: 194px;
+    height: 93px;
+    text-align: center;
+    font-size: var(--paragraph4-size);
+    color: var(--color-gray-100);
+    font-family: var(--paragraph4);
+}
+.categorysection {
+    position: absolute;
+    top: 293px;
+    left: 11px;
+    width: 194px;
+    height: 120px;
+    font-size: var(--font-size-lg);
+    color: var(--color-base-black);
+    font-family: var(--font-montserrat);
+}
+.logo {
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    right: 0%;
+    left: 0%;
+    height: 1196px;
+    font-size: 24px;
+    color: var(--color-brand-green);
+    font-family: var(--font-hawthorne-vintage);
+}
+.glass-bottle-with-olive-oil-gr-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 393px;
+    height: 230px;
+    object-fit: cover;
+}
+.shop-now {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+}
+.buttons {
+    position: absolute;
+    top: 23px;
+    left: 250px;
+    border-radius: var(--br-xs);
+    background-color: var(--color-brand-green);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+}
+.healthy-cooking {
+    position: absolute;
+    top: 11px;
+    left: 6px;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    line-height: 100%;
+    font-weight: 600;
+    color: var(--color-grey-Color-5);
+    text-align: center;
+}
+.offer-card {
+    position: absolute;
+    top: 79px;
+    left: 0px;
+    width: 393px;
+    height: 230px;
+    font-size: var(--font-size-base);
+    color: var(--color-base-white);
+}
+.our-featured-products {
+    position: absolute;
+    top: 468px;
+    left: 11px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-grey-Color-5);
+}
+.groundnut-oil-card-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-mini);
+    width: 365px;
+    height: 200px;
+   
+}
+.item-description {
+    position: absolute;
+    top: 32px;
+    right: 5px;
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 185px;
+    height: 72px;
+}
+.small {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 20px;
+    font-weight: 500;
+}
+.add-to-cart {
+    position: absolute;
+    top: 159px;
+    left: 204px;
+    border-radius: var(--br-xs);
+    background-color: var(--color-lightgreen);
+    width: 120px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-5xs) var(--padding-xs);
+    box-sizing: border-box;
+    color: var(--Primary-Base-White);
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+}
+.groundnut-oil {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    width: 119.2px;
+    height: 25px;
+}
+.b {
+    position: absolute;
+    top: 0px;
+    left: 145.28px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    width: 39.7px;
+    height: 25px;
+}
+.groundnut-oil-parent {
+    position: absolute;
+    top: 7px;
+    left: 176px;
+    width: 185px;
+    height: 25px;
+    font-size: var(--font-size-mini);
+    color: var(--color-grey-Color-5);
+}
+.dsc00197-1-icon {
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    border-radius: var(--br-3xs);
+    width: 155px;
+    height: 185px;
+    object-fit: cover;
+          
+    cursor: pointer;
+    pointer-events: auto;
+}
+.medium,
+.medium11,
+.medium22 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 50;
+    top: -0.5px;
+    font-size: 12px;
+}
+
+.system-icons {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.buttons1 {
+    position: absolute;
+    top: 121px;
+    left: calc(50% + 21.5px);
+    border-radius: var(--br-xs);
+    border: 1px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    width: 120px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    color: var(--color-grey-Color-4);
+}
+.groundnut-oil-card {
+    position: absolute;
+    top: 502px;
+    left: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 365px;
+    height: 200px;
+    
+}
+.item-description1 {
+    position: absolute;
+    top: 32px;
+    right: 4px;
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 185px;
+    height: 91px;
+}
+.dsc00229-1-icon {
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    border-radius: var(--br-xs);
+    width: 155px;
+    height: 185px;
+    object-fit: cover;
+}
+.coconut-oil-card {
+    position: absolute;
+    top: 712px;
+    left: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 365px;
+    height: 200px;
+}
+.item-description2 {
+    position: absolute;
+    top: 34px;
+    right: 4px;
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 185px;
+    height: 71px;
+}
+.coconut-oil-card1 {
+    position: absolute;
+    top: 922px;
+    left: 12px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 365px;
+    height: 200px;
+}
+.olive-oil-icon {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+    
+}
+.essential-oil-icon {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.coconut-oil-icon {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.social-icons {
+    position: fixed;
+    right: 16px;
+    bottom: 80px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    z-index: 9999;
+}
+.background {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 178.75px);
+    border-radius: 40px;
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-base-black);
+    box-sizing: border-box;
+    width: 357.5px;
+    height: 50px;
+}
+.medium3 {
+    position: relative;
+    line-height: 26px;
+    font-weight: 500;
+}
+.buttons4 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% - 64.75px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 100;
+    pointer-events: auto    ;
+}
+.buttons5 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% + 23.25px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto
+}
+.magnifier-icon {
+    position: absolute;
+    bottom: 12.8px;
+    left: calc(50% + 125px);
+    width: 22.5px;
+    height: 22.5px;
+    object-fit: contain;
+}
+.buttons6 {
+    position: absolute;
+    bottom: 7.3px;
+    left: calc(50% - 155.75px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-grey-Color);
+    width: 80px;
+    height: 35px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto
+}
+.nav-bar{
+        position: fixed;
+        bottom: 12px;
+        left: 0;
+        width: 100%;
+        z-index: 9999; /* Make sure it’s above everything */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px; /* your preferred height */
+        
+}
+
+.home {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-base-white);
+    height: 100%;
+    overflow: auto;
+    text-align: left;
+    font-size: var(--font-size-sm);
+    color: var(--Color-Text-secondary);
+    font-family: var(--font-montserrat);
+}
+
+
+.magnifyingglass1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    line-height: 50px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.magnifyingglass {
+    width: 28px;
+    position: relative;
+    height: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.search {
+    color: var(--Label-Colors-LC-L-Secondary);
+}
+.placeholder-label {
+    flex: 1;
+    position: relative;
+    font-size: var(--Default-size-Body-size);
+    letter-spacing: -0.41px;
+    line-height: 22px;
+    font-family: var(--Default-size-Body);
+    text-align: left;
+    color: #0a7aff;
+}
+.content {
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    background-color: var(--System-Materials-SM-L-Thick);
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-5xs);
+    box-sizing: border-box;
+}
+.searchbar {
+    width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--Label-Colors-LC-L-Secondary);
+    font-family: var(--font-sf-pro-display);
+}
+
+
+.label {
+    position: relative;
+    font-size: var(--font-size-sm);
+    z-index: 0;
+}
+.selected-option {
+    position: relative;
+}
+.text-wrap {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.keyboard-arrow-up {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.form {
+    align-self: stretch;
+    border-radius: var(--br-5xs);
+    background-color: var(--color-base-white);
+    border: 2px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px var(--padding-xs);
+    gap: 8px;
+    z-index: 1;
+}
+.text-wrap1 {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.dropdown-item {
+    align-self: stretch;
+    background-color: var(--color-base-white);
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px var(--padding-xs);
+    box-sizing: border-box;
+}
+.drowdown-list {
+    width: 100%;
+    margin: 0 !important;
+    position: absolute;
+    top: 77px;
+    right: 0px;
+    left: 0px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    border-radius: var(--br-5xs);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 2;
+    color: var(--color-blueviolet);
+}
+.input {
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    width: 173px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.sample {
+    width: 217px;
+    position: relative;
+    border-radius: var(--br-xs);
+    background: linear-gradient(180.06deg, var(--color-base-white), var(--color-lightgreen));
+    height: 310px;
+    overflow: hidden;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-base-black);
+    font-family: var(--font-inter);
+}
+.cart-icon-child {
+    position: absolute;
+    top: -60px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    border: 1px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+}
+.shopping-bag-icon {
+    position: absolute;
+    top: -49px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+.cart-icon {
+    position: absolute;
+    top: 89px;
+    left: 331px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+    .groundnut-oil-card,
+    .coconut-oil-card {
+        width: 90%;
+        left: 5%;
+    }
+}
+
+.prof-icon1 {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    
+}
+.profile-icon1 {
+    position: relative;
+    top: -20px;
+    left: 270px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.profile-child1 {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 150px;
+    border-radius: var(--br-21xl);
+    border: 1px solid var(--color-lightgreen);
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+}

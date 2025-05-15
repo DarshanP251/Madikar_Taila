@@ -1,0 +1,60 @@
+.magnifyingglass1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    line-height: 50px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.magnifyingglass {
+    width: 28px;
+    position: relative;
+    height: 28px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.search {
+    color: var(--Label-Colors-LC-L-Secondary);
+}
+.placeholder-label {
+    flex: 1;
+    position: relative;
+    font-size: var(--Default-size-Body-size);
+    letter-spacing: -0.41px;
+    line-height: 22px;
+    font-family: var(--Default-size-Body);
+    text-align: left;
+    color: #0a7aff;
+}
+.content {
+    align-self: stretch;
+    border-radius: var(--br-3xs);
+    background-color: var(--System-Materials-SM-L-Thick);
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-5xs);
+    box-sizing: border-box;
+}
+.searchbar {
+    width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    text-align: center;
+    font-size: 18px;
+    color: var(--Label-Colors-LC-L-Secondary);
+    font-family: var(--font-sf-pro-display);
+}
+

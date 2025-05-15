@@ -1,0 +1,533 @@
+.contact-inputs{
+    width: 280px;
+    height: 44px;
+    border: black;
+    outline: 0.1px solid #000;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #8f7070;
+    border-radius: 50px;
+    background-color: #ffffff;
+    border-color: #000;
+    left: -25px;
+    top: -25px;
+    position: relative;
+    transition: border-color 0.3s ease;
+}
+.error-highlight {
+  border-color: #ff4444 !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.contact-inputs:invalid {
+  border-color: #ff4444;
+  box-shadow: 0 0 3px rgba(255, 68, 68, 0.3);
+}
+
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    line-height: 150%;
+    
+}
+.black-icon {
+    position: relative;
+    height: 89.44%;
+    width: 11.98%;
+    top: 0%;
+    right: 88.02%;
+    bottom: 1.56%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logo {
+    position: absolute;
+    top: 17px;
+    left: 32px;
+    width: 167px;
+    height: 36px;
+    color: var(--color-brand-green);
+    font-family: var(--font-hawthorne-vintage);
+}
+.create-your-account {
+    position: absolute;
+    top: calc(50% - 232px);
+    left: calc(50% - 123.5px);
+    font-size: 24px;
+    line-height: 150%;
+    font-weight: 500;
+}
+.iphone-14-15-pro-2-child {
+    position: absolute;
+    top: calc(50% - 163px);
+    left: calc(50% - 153.5px);
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #173c1d;
+    box-sizing: border-box;
+    width: 306px;
+    height: 40px;
+}
+
+.iphone-14-15-pro-2-item {
+    position: absolute;
+    top: calc(50% - 106px);
+    left: calc(50% - 150.5px);
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #173c1d;
+    box-sizing: border-box;
+    width: 306px;
+    height: 40px;
+}
+.email{
+    position: absolute;
+    top: calc(64.5% - 152px);
+    left: calc(50% - 123.5px);
+    line-height: 150%;
+    font-weight: 200;
+}
+.Name {
+    position: absolute;
+    top: calc(50.5% - 152px);
+    left: calc(50% - 123.5px);
+    line-height: 150%;
+    font-weight: 200;
+}
+.Phone-Number {
+    position: absolute;
+    top: calc(57.5% - 152px);
+    left: calc(50% - 123.5px);
+    line-height: 150%;
+    font-weight: 200;
+}
+.password1 {
+    position: absolute;
+    top: calc(65% - 95px);
+    left: calc(50% - 123.5px);
+    line-height: 150%;
+    font-weight: 200;
+}
+.medium {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+}
+.continue {
+    position: absolute;
+    top: calc(65% - 46px);
+    left: calc(50% - 150.5px);
+    border-radius: 12px;
+    background-color: #48cb66;
+    width: 303px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+}
+.already-have-an {
+    position: absolute;
+    top: calc(65% + 14px);
+    left: calc(50% - 108.5px);
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 300;
+}
+.iphone-14-15-pro-2-inner {
+    position: absolute;
+    top: calc(60% + 135.5px);
+    left: calc(50% - 154px);
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    width: 131px;
+    height: 11px;
+    color: #000;
+}
+.line-div1 {
+    position: absolute;
+    top: calc(60% + 135.5px);
+    left: calc(15% + 154px);
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    width: 131px;
+    height: 11px;
+    color: #000;
+}
+
+.or1 {
+    position: absolute;
+    top: calc(65.5% + 75px);
+    left: calc(50% - 12.5px);
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+}
+.social-icons {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.sign-in-with {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 28px;
+}
+.sign-in-with-google {
+    position: absolute;
+    top: calc(50% + 136px);
+    left: calc(50% - 150.5px);
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #d2d5da;
+    box-sizing: border-box;
+    width: 300px;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    gap: 12px;
+    font-size: 18px;
+}
+.terms-and-conditions {
+    color: #5ea3fc;
+}
+.by-creating-an-container1 {
+    width: 100%;
+}
+.by-creating-an-container {
+    position: absolute;
+    top: 647px;
+    left: calc(50% - 171.66px);
+    line-height: 150%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 341px;
+}
+.log-in {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 500;
+}
+.login {
+    position: absolute;
+    top: 443px;
+    left: 259px;
+    border-radius: 1000px;
+    width: 55px;
+    height: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 16px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 14px;
+    color: #48cb66;
+}
+.terms-and-conditions1 {
+    position: absolute;
+    top: 683px;
+    left: 42px;
+    line-height: 150%;
+    color: #5ea3fc;
+    display: inline-block;
+    width: 133px;
+}
+.iphone-14-15-pro-2 {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 852px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 12px;
+    color: #000;
+    font-family: Montserrat;
+}
+
+
+
+
+
+/*Login  page*/
+.madikar-taila {
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    line-height: 150%;
+    font-size: 24px;
+}
+.black-icon {
+    position: relative;
+    height: 88.44%;
+    width: 11.98%;
+    top: 0%;
+    right: 88.02%;
+    bottom: 1.56%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logo {
+    position: relative;
+    top: 17px;
+    left: 32px;
+    width: 167px;
+    height: 36px;
+    color: var(--color-brand-green);
+    font-family: var(--font-hawthorne-vintage);
+}
+.login-to-your {
+    margin: 0;
+}
+.login-to-your-container {
+    position: absolute;
+    top: calc(50% - 269px);
+    left: calc(50% - 101.5px);
+    line-height: 150%;
+    font-weight: 500;
+    text-align: center;
+    display: none;
+}
+.iphone-14-15-pro-3-child {
+    position: absolute;
+    top: calc(50% - 163px);
+    left: calc(50% - 153.5px);
+    border-radius: var(--br-xl);
+    background-color: var(--primary-base-white);
+    border: 1px solid var(--color-brand-green);
+    box-sizing: border-box;
+    width: 306px;
+    height: 40px;
+}
+.iphone-14-15-pro-3-item {
+    position: absolute;
+    top: calc(50% - 106px);
+    left: calc(50% - 150.5px);
+    border-radius: var(--br-xl);
+    background-color: var(--primary-base-white);
+    border: 1px solid var(--color-brand-green);
+    box-sizing: border-box;
+    width: 306px;
+    height: 40px;
+}
+.email-address {
+    position: absolute;
+    top: calc(50% - 152px);
+    left: calc(50% - 123.5px);
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    font-weight: 200;
+}
+.password {
+    position: absolute;
+    top: calc(50% - 95px);
+    left: calc(50% - 123.5px);
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    font-weight: 200;
+}
+.medium {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+}
+.continue2 {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 150.5px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-lightgreen);
+    width: 303px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 14px var(--padding-base);
+    box-sizing: border-box;
+    font-size: var(--font-size-base);
+}
+.dont-have-an {
+    position: absolute;
+    top: calc(50% + 64px);
+    left: calc(50% - 108.5px);
+    font-size: var(--font-size-sm);
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 300;
+}
+.iphone-14-15-pro-3-inner {
+    position: absolute;
+    top: calc(50% + 136.5px);
+    left: calc(50% - 154px);
+    border-top: 1px solid var(--color-gray);
+    box-sizing: border-box;
+    width: 128px;
+    height: 1px;
+}
+.line-div {
+    position: absolute;
+    top: calc(55% + 136.5px);
+    left: calc(50% + 25px);
+    border-top: 1px solid var(--color-gray);
+    box-sizing: border-box;
+    width: 131px;
+    height: 1px;
+}
+.or {
+    position: absolute;
+    top: calc(55% + 123px);
+    left: calc(50% - 12.5px);
+    font-size: var(--font-size-base);
+    letter-spacing: -0.02em;
+    line-height: 26px;
+}
+.social-icons {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.sign-in-with {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 28px;
+}
+.log-in-with-google {
+    position: absolute;
+    top: calc(60% + 185px);
+    left: calc(50% - 150.5px);
+    border-radius: var(--br-xs);
+    background-color: var(--primary-base-white);
+    border: 1px solid var(--primary-gray-300);
+    box-sizing: border-box;
+    width: 300px;
+    height: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    gap: 12px;
+    font-size: 18px;
+}
+.system-icons {
+    width: 16px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.small {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 20px;
+}
+.show-password {
+    position: absolute;
+    top: 370px;
+    left: 10px;
+    border-radius: var(--br-981xl);
+    width: 200px;
+    height: 16px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-5xs) var(--padding-xs);
+    box-sizing: border-box;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--color-grey-color-2);
+    font-family: var(--font-inter);
+}
+.forgot-password {
+    position: absolute;
+    top: 370px;
+    left: 220px;
+    border-radius: var(--br-981xl);
+    width: 150px;
+    height: 16px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-5xs) var(--padding-xs);
+    box-sizing: border-box;
+    font-size: var(--font-size-xs);
+    color: #5684b9;
+}
+.sign-up {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 26px;
+    font-weight: 500;
+}
+.sign-in {
+    position: absolute;
+    top: 493px;
+    left: 248px;
+    border-radius: var(--br-981xl);
+    width: 55px;
+    height: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-lightgreen);
+}
+.login-to-your-container1 {
+    position: absolute;
+    top: calc(50% - 263px);
+    left: calc(50% - 103.5px);
+    line-height: 150%;
+    font-weight: 500;
+    text-align: center;
+}
+.iphone-14-15-pro-3 {
+    width: 100%;
+    position: relative;
+    background-color: var(--primary-base-white);
+    height: 852px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-5xl);
+    color: var(--primary-base-black);
+    font-family: var(--font-montserrat);
+}

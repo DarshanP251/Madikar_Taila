@@ -1,0 +1,72 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+input,
+button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+input:focus {
+  border-color: #4CAF50; /* Green accent on focus */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* subtle green glow on focus */
+}
+
+button {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    padding: 1.5rem;
+    margin: 20px;
+  }
+}

@@ -1,0 +1,92 @@
+.background {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 178.75px);
+    border-radius: 40px;
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-base-black);
+    box-sizing: border-box;
+    width: 357.5px;
+    height: 50px;
+}
+.medium3 {
+    position: relative;
+    line-height: 26px;
+    font-weight: 500;
+}
+.buttons4 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% - 64.75px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 100;
+    pointer-events: auto    ;
+}
+.buttons5 {
+    position: absolute;
+    bottom: 10.3px;
+    left: calc(50% + 23.25px);
+    border-radius: var(--br-xs);
+    width: 75px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto
+}
+.magnifier-icon {
+    position: absolute;
+    bottom: 12.8px;
+    left: calc(50% + 125px);
+    width: 22.5px;
+    height: 22.5px;
+    object-fit: contain;
+}
+.buttons6 {
+    position: absolute;
+    bottom: 7.3px;
+    left: calc(50% - 155.75px);
+    border-radius: var(--br-xs);
+    background-color: var(--color-grey-Color);
+    width: 80px;
+    height: 35px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm) var(--padding-base);
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto
+}
+.nav-bar{
+        position: fixed;
+        bottom: 12px;
+        transform: translateX(-50%);
+        left: 195px;
+        width: 100%;
+        z-index: 9999; /* Make sure it’s above everything */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px; /* your preferred height */
+        
+}

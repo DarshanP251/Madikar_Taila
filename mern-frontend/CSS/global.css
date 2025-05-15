@@ -1,0 +1,673 @@
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-satoshi: Satoshi;
+    --font-montserrat: Montserrat;
+    
+    /* font sizes */
+    --font-size-5xl: 24px;
+    
+    /* Colors */
+    --color-lightgreen: #48cb66;
+    
+    /* Paddings */
+    --padding-lg: 18px;
+    --padding-5xl: 24px;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-brand-green: #173c1d;
+    --color-brand-pista: #a6b79b;
+    
+    /* Number Variables */
+    --Spacing-6: 24px;
+    
+}
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-inter: Inter;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-5xl: 24px;
+    
+    /* Colors */
+    --color-gray: rgba(0, 0, 0, 0.6);
+    --color-lightgreen: #48cb66;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    --br-xl: 20px;
+    --br-981xl: 1000px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-brand-green: #173c1d;
+    --color-grey-color-2: #b3b3b3;
+    --primary-base-black: #000;
+    --primary-base-white: #fff;
+    --primary-gray-300: #d2d5da;
+    
+}
+
+/*load*/
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-base-white: #fff;
+    --color-brand-pista: #a6b79b;
+    
+}
+/*HOME*/
+
+
+   
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+.popup-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --paragraph4: Poppins;
+    --Default-size-Body: 'SF Pro Text';
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    --font-sf-pro-display: 'SF Pro Display';
+    --font-inter: Inter;
+    
+    /* font sizes */
+    --paragraph4-size: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-mini: 15px;
+    --font-size-base: 16px;
+    --Default-size-Body-size: 17px;
+    --font-size-lg: 18px;
+    
+    /* Colors */
+    --color-blueviolet: #7949ff;
+    --color-gray-100: #868889;
+    --color-honeydew: #dcf5e4;
+    --color-lightgreen: #48cb66;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+    --padding-sm: 14px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-5xs: 8px;
+    --br-3xs: 10px;
+    --br-xs: 12px;
+    --br-mini: 15px;
+    
+    /* Effects */
+    --Shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Color-Text-secondary: #5a5a5a;
+    --Label-Colors-LC-L-Secondary: rgba(60, 60, 67, 0.6);
+    --Primary-Base-White: #fff;
+    --System-Materials-SM-L-Thick: rgba(250, 250, 250, 0.93);
+    --color-base-black: #000;
+    --color-base-white: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color: #dee0df;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+
+/*about us*/
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    --font-satoshi: Satoshi;
+    
+    /* font sizes */
+    --font-size-xs: 12px;
+    --font-size-lg: 18px;
+    
+    /* Colors */
+    --color-ghostwhite: #f4f5f9;
+    --color-lightgreen: #48cb66;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-brand-green: #173c1d;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+
+/*Shop*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+.popup-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --Body-Text-Large-Regular: Inter;
+    --Default-size-Body: 'SF Pro Text';
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    --font-sf-pro-display: 'SF Pro Display';
+    
+    /* font sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-mini: 15px;
+    --Body-Text-Large-Regular-size: 16px;
+    --Default-size-Body-size: 17px;
+    --font-size-5xl: 24px;
+    
+    /* Colors */
+    --color-darkseagreen: #bbdfc0;
+    --color-lightgreen: #48cb66;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+    --padding-sm: 14px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-3xs: 10px;
+    --br-xs: 12px;
+    --br-mini: 15px;
+    --br-21xl: 40px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Color-Text-secondary: #5a5a5a;
+    --Label-Colors-LC-L-Secondary: rgba(60, 60, 67, 0.6);
+    --Primary-Base-White: #fff;
+    --System-Materials-SM-L-Thick: rgba(250, 250, 250, 0.93);
+    --color-base-black: #000;
+    --color-base-white: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color: #dee0df;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+/*categories*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-mini: 15px;
+    
+    /* Colors */
+    --color-lightgreen: #48cb66;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+    --padding-sm: 14px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-3xs: 10px;
+    --br-xs: 12px;
+    --br-mini: 15px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Color-Text-secondary: #5a5a5a;
+    --Primary-Base-White: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+/*product detail*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+.popup-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --Body-Text-Medium-Regular: Inter;
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --Body-Text-Medium-Regular-size: 14px;
+    --font-size-base: 16px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-blueviolet: #7949ff;
+    --color-dimgray-100: #696969;
+    --color-gold: #f9d03f;
+    --color-lightgreen: #48cb66;
+    --color-white: #fff;
+    
+    /* Gaps */
+    --gap-9xs: 4px;
+    
+    /* Paddings */
+    --padding-xs: 12px;
+    
+    /* Border radiuses */
+    --br-12xs: 1px;
+    --br-5xs: 8px;
+    --br-xs: 12px;
+    
+    /* Effects */
+    --Shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-brand-green: #173c1d;
+    --color-grey-Color-3: #868686;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+/*empty cart*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    --font-poppins: Poppins;
+    
+    /* font sizes */
+    --font-size-lg: 18px;
+    
+    /* Colors */
+    --color-black: #000;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Primary-Base-White: #fff;
+    --Primary-Base-White1: #fff;
+    --color-brand-green: #173c1d;
+    
+}
+/*cart*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    --font-poppins: Poppins;
+    
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    
+    /* Colors */
+    --color-black: #000;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Grey-Scale-Black: #1e222b;
+    --Grey-Scale-Black-05: #f8f9fb;
+    --Primary-Base-White: #fff;
+    --Primary-Base-White1: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color-2: #b3b3b3;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+/*add address*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-sm: 14px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-gray: #868889;
+    
+    /* Border radiuses */
+    --br-8xs: 5px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-base-white: #fff;
+    --color-brand-green: #173c1d;
+    
+}
+/*checkout*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    
+    /* Colors */
+    --color-black: #000;
+    
+    /* Gaps */
+    --gap-181xl: 200px;
+    
+    /* Paddings */
+    --padding-10xs: 3px;
+    --padding-3xs: 10px;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Grey-Scale-Black-05: #f8f9fb;
+    --Primary-Base-White: #fff;
+    --Primary-Base-White1: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color-4: #5a5a5a;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+/*AppUPI*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-3xs: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-lightgray: #cbcbcb;
+    --color-silver: #c8c7c7;
+    
+    /* Gaps */
+    --gap-9xs: 4px;
+    --gap-3xs: 10px;
+    --gap-xs: 12px;
+    --gap-base: 16px;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-9xs: 4px;
+    --br-base: 16px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --color-base-white: #fff;
+    --color-brand-green: #173c1d;
+    
+}
+/*AppUPI-1*/
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-3xs: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-gainsboro: #e0e0e0;
+    --color-lightgray: #cbcbcb;
+    
+    /* Gaps */
+    --gap-9xs: 4px;
+    --gap-3xs: 10px;
+    --gap-xs: 12px;
+    --gap-base: 16px;
+    
+    /* Paddings */
+    --padding-5xs: 8px;
+    --padding-base: 16px;
+    
+    /* Border radiuses */
+    --br-9xs: 4px;
+    --br-base: 16px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Primary-Base-White: #fff;
+    --color-base-white: #fff;
+    --color-brand-green: #173c1d;
+    
+}
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-dimgray: #5a5a5a;
+    
+    /* Gaps */
+    --gap-181xl: 200px;
+    
+    /* Paddings */
+    --padding-10xs: 3px;
+    --padding-3xs: 10px;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Primary-Base-White: #fff;
+    --Primary-Base-White1: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color-5: #2d2d2d;
+    
+}
+
+body {
+    margin: 0;
+    line-height: normal;
+}
+
+
+:root {
+    
+    /* Fonts */
+    --font-montserrat: Montserrat;
+    --font-hawthorne-vintage: 'Hawthorne Vintage';
+    
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    
+    /* Colors */
+    --color-black: #000;
+    --color-dimgray: #5a5a5a;
+    
+    /* Gaps */
+    --gap-181xl: 200px;
+    
+    /* Paddings */
+    --padding-10xs: 3px;
+    --padding-3xs: 10px;
+    
+    /* Border radiuses */
+    --br-xs: 12px;
+    
+    /* Figma Variables */
+    
+    /* Color Variables */
+    --Primary-Base-White: #fff;
+    --Primary-Base-White1: #fff;
+    --color-brand-green: #173c1d;
+    --color-grey-Color-5: #2d2d2d;
+    
+}

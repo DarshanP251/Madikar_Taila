@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/ProductDetail.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Hawthorne Vintage:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="product-detail">
+      <img class="dsc00197-1-icon" alt="" src="../SRC/DSC00197 1.png" />
+
+      <img class="arrow-chevron-left" alt="" src="../SRC/Chevron_Left.svg" />
+
+      <div class="parent">
+        <div class="div">1</div>
+        <div class="ellipse-parent">
+          <div class="group-child"></div>
+          <div class="rectangle-parent">
+            <div class="group-item"></div>
+            <div class="group-inner"></div>
+          </div>
+        </div>
+        <div class="ellipse-group">
+          <div class="ellipse-div"></div>
+          <div class="rectangle-wrapper">
+            <div class="rectangle-div"></div>
+          </div>
+        </div>
+      </div>
+      <div class="primarybuttonricon-parent">
+        <div class="primarybuttonricon" id="primaryButtonRIconContainer">
+          <div class="primarybutton">
+            <div class="add-to-cart">Add to cart</div>
+          </div>
+          <img class="vector-icon" alt="" src="../SRC/Vector.svg" />
+        </div>
+        <div class="titleprice">
+          <div class="div1">₹325/-</div>
+          <div class="ltr">1 Ltr</div>
+          <b class="groundnut-oil">Groundnut Oil</b>
+        </div>
+        <div class="buttons" id="buttonsContainer">
+          <div class="medium">Select Qty</div>
+          <div class="system-icons">
+            <img class="vector-icon1" alt="" src="../SRC/Vector.svg" />
+
+            <img class="vector-icon2" alt="" src="../SRC/Vector.svg" />
+          </div>
+        </div>
+      </div>
+      <div class="logo">
+        <div class="madikar-taila">Madikar Taila</div>
+        <img class="black-icon" alt="" src="../SRC/drop.svg" />
+      </div>
+      <div class="cart-icon" id="cartIconContainer">
+        <div class="cart-icon-child"></div>
+        <img class="shopping-bag-icon" alt="" src="../SRC/Shopping bag.png" />
+      </div>
+      <div class="description">
+        <div class="cold-pressed-groundnut-oil">
+          Cold-pressed groundnut oil is extracted naturally, preserving its rich
+          nutrients and flavor. It is packed with antioxidants, healthy fats,
+          and essential vitamins for overall well-being. With its high smoke
+          point, it’s ideal for deep frying, sautéing, and everyday cooking.
+          This oil enhances dishes with a mild nutty aroma, making meals tastier
+          and healthier. It supports heart health, improves digestion, and
+          boosts immunity when consumed regularly. A pure, chemical-free choice,
+          perfect for those who prefer natural and wholesome cooking!
+        </div>
+      </div>
+      <div class="description1">
+        <div class="small">Description</div>
+        <div class="system-icons1">
+          <img class="vector-icon3" alt="" src="../SRC/Vector.svg" />
+        </div>
+      </div>
+      <div class="benefits">
+        <div class="small">Benefits</div>
+        <div class="system-icons1"></div>
+      </div>
+      <div class="description2">
+        <div class="cold-pressed-groundnut-oil1">
+          Cold-pressed groundnut oil is extracted naturally, preserving its rich
+          nutrients and flavor. It is packed with antioxidants, healthy fats,
+          and essential vitamins for overall well-being. With its high smoke
+          point, it’s ideal for deep frying, sautéing, and everyday cooking.
+          This oil enhances dishes with a mild nutty aroma, making meals tastier
+          and healthier.
+        </div>
+      </div>
+    </div>
+
+    <div id="sampleContainer" class="popup-overlay" style="display: none">
+      <div class="sample">
+        <div class="input">
+          <div class="label">Edible Oils</div>
+          <div class="form">
+            <div class="text-wrap">
+              <div class="selected-option">Select quantity</div>
+            </div>
+            <img class="keyboard-arrow-up" alt="" src="../SRC/DownArrow.svg" />
+          </div>
+          <div class="drowdown-list">
+            <div class="dropdown-item">
+              <div class="text-wrap1">
+                <div class="selected-option">500ml</div>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <div class="text-wrap1">
+                <div class="selected-option">1 Ltr</div>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <div class="text-wrap1">
+                <div class="selected-option">2 Ltr</div>
+              </div>
+            </div>
+            <div class="dropdown-item">
+              <div class="text-wrap1">
+                <div class="selected-option">5 Ltr</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var primaryButtonRIconContainer = document.getElementById(
+        "primaryButtonRIconContainer"
+      );
+      if (primaryButtonRIconContainer) {
+        primaryButtonRIconContainer.addEventListener("click", function (e) {
+          const product = {
+            id: "groundnut-1ltr", // Unique ID
+            name: "Groundnut Oil",
+            quantity: 1,
+            price: 325,
+            size: "1 Ltr",
+            image: "DSC00197 1.png",
+          };
+
+          // Check if cart exists in localStorage
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+          // Check if this product already exists in cart
+          const index = cart.findIndex((item) => item.id === product.id);
+          if (index !== -1) {
+            cart[index].quantity += 1; // Increase quantity
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          window.location.href = "../HTML/EmptyCart.html"; // redirect to cart
+        });
+      }
+
+      var buttonsContainer = document.getElementById("buttonsContainer");
+      if (buttonsContainer) {
+        buttonsContainer.addEventListener("click", function () {
+          var popup = document.getElementById("sampleContainer");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+
+      var cartIconContainer = document.getElementById("cartIconContainer");
+      if (cartIconContainer) {
+        cartIconContainer.addEventListener("click", function (e) {
+          window.location.href = "../HTML/EmptyCart.html";
+        });
+      }
+	  
+    </script>
+  </body>
+</html>

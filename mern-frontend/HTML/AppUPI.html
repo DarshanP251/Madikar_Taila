@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet"  href="../CSS/AppUPI.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne Vintage:wght@400&display=swap" />
+</head>
+<body>
+    <div class="app-or-upi">
+        <img class="background-icon" alt="" src="../SRC/background.svg">
+        
+        <div class="titlebar">
+            <div class="titlebar-child"></div>
+            <div class="payment">Payment</div>
+            <img class="arrow-chevron-left" alt="" src="../SRC/Chevron_Left.svg" onclick="window.history.back()">
+        </div>
+        
+        <div class="frame-parent">
+            <!-- Added disabled class to payment sections -->
+            <div class="pay-using-apps-parent disabled">
+                <div class="pay-using-apps">Pay Using Apps</div>
+                <div class="frame-group">
+                    <div class="frame-container">
+                        <div class="you-will-be">You will be redirected to your UPI app</div>
+                    </div>
+                    <div class="frame-div">
+                        <div class="frame-parent1">
+                            <div class="rectangle-parent">
+                                <div class="frame-item"></div>
+                                <img class="image-1-icon" alt="" src="../SRC/image 1.png">
+                            </div>
+                            <div class="phonepe">PhonePe</div>
+                        </div>
+                        <div class="frame-parent2">
+                            <div class="rectangle-parent">
+                                <div class="frame-item"></div>
+                                <img class="image-10-icon" alt="" src="../SRC/image 10.png">
+                            </div>
+                            <div class="phonepe">
+                                <p class="google">Google</p>
+                                <p class="google">Pay</p>
+                            </div>
+                        </div>
+                        <div class="frame-parent1">
+                            <div class="rectangle-parent">
+                                <div class="frame-item"></div>
+                                <img class="image-11-icon" alt="" src="../SRC/image 11.png">
+                            </div>
+                            <div class="phonepe">PayTM</div>
+                        </div>
+                    </div>
+                    <div class="frame-parent4" id="frameContainer2">
+                        <div class="pay-with-other">Pay with other UPI apps</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Added disabled class to UPI section -->
+            <div class="pay-with-upi-id-mobile-number-parent disabled">
+                <div class="pay-using-apps">Pay With UPI ID/ Mobile number</div>
+                <div class="frame-parent5">
+                    <div class="frame-container">
+                        <div class="you-will-receive">You will receive a payment request on your UPI app</div>
+                    </div>
+                    <div class="frame-parent4" id="frameContainer1">
+                        <div class="pay-with-other">UPI ID/ Mobile Number</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo">
+            <div class="madikar-taila">Madikar Taila</div>
+            <img class="black-icon" alt="" src="../SRC/drop.svg">
+        </div>
+        
+        <div class="secured-by-256-bit">Secured by 256-Bit Encryption</div>
+        <div class="choose-a-payment">Choose a Payment Method</div>
+        
+        <!-- Added selected class to COD -->
+        <div class="app-or-upi-inner">
+            <div class="cash-on-delivery-parent selected" id="frameContainer">
+                <div class="cash-on-delivery">Cash On Delivery</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+		var backArrow = document.querySelector('.arrow-chevron-left');
+        if(backArrow) {
+            backArrow.addEventListener('click', function() {
+                window.history.back();
+            });
+        }
+        var frameContainer = document.getElementById("frameContainer");
+        if(frameContainer) {
+            frameContainer.addEventListener("click", function (e) {
+                window.location.href = "../HTML/orderSummary.html";
+            });
+        }
+    </script>
+</body>
+</html>

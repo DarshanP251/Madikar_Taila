@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="../CSS/profilepage.css" />
+  <link rel="stylesheet" href="../CSS/profilepage1.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne+Vintage:wght@400&display=swap" />
+</head>
+
+<body>
+  <div class="profile">
+    <div class="profile-child"></div>
+    <img class="arrow-chevron-left" alt="Back" src="../SRC/backArrow.svg" id="backButton">
+    <div class="your-account">Your Account</div>
+
+    <!-- User Name -->
+    <div class="profile-inner2">
+      <div class="frame-wrapper1">
+        <div class="frame-wrapper">
+          <div class="your-orders-parent">
+            <div class="your-orders" id="userName">Loading...</div>
+            <div class="view" id="editName">Edit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping Address -->
+    <div class="profile-inner">
+      <div class="frame-parent">
+        <div class="shipping-to-parent">
+          <div class="shipping-to">Shipping to</div>
+          <div class="buttons">
+            <div class="small" id="editAddress">Edit</div>
+          </div>
+        </div>
+        <div class="kusugal-road-keshwapur-hubba-wrapper">
+          <div class="kusugal-road-keshwapur-container" id="shippingAddress">Loading address...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <div class="madikar-taila">Madikar Taila</div>
+      <img class="black-icon" alt="Logo" src="../SRC/drop.svg">
+    </div>
+
+    <!-- Orders -->
+    <div class="group-div">
+      <div class="frame-wrapper">
+        <div class="your-orders-parent">
+          <div class="your-orders">Your Orders</div>
+          <div class="view" id="viewOrders">view</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="profile-inner1">
+      <div class="group-wrapper">
+        <div class="frame-container">
+          <div class="frame-div">
+            <div class="your-orders-parent">
+              <div class="contact-no-parent">
+                <div class="shipping-to">Contact no.</div>
+                <div class="buttons">
+                  <div class="small" id="editContact">Edit</div>
+                </div>
+              </div>
+              <div class="div" id="contactNumber">Loading...</div>
+            </div>
+          </div>
+        </div>
+        <div class="group-child"></div>
+      </div>
+    </div>
+
+
+    <!-- Back to Home -->
+    <div class="start-shopping-container">
+      <div class="start-shopping" id="startShoppingContainer">
+        <div class="back-to-home">Back to Home</div>
+      </div>
+      <div class="start-shopping1" id="logoutContainer">
+        <div class="back-to-home">Log Out</div>
+      </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="nameModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Edit Name</h2>
+        <input type="text" id="newName" class="modal-input" placeholder="Enter your name">
+        <button id="saveName" class="modal-button">Save Changes</button>
+      </div>
+    </div>
+
+    <div id="addressModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Edit Address</h2>
+        <textarea id="newAddress" class="modal-textarea" placeholder="Enter your full address"></textarea>
+        <button id="saveAddress" class="modal-button">Save Changes</button>
+      </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Edit Contact Number</h2>
+        <input type="tel" id="newContact" class="modal-input" placeholder="Enter your contact number">
+        <button id="saveContact" class="modal-button">Save Changes</button>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+      // Authentication configuration
+      const API_BASE = 'http://localhost:5000/api';
+      let authToken = localStorage.getItem('authToken');
+      let refreshToken = localStorage.getItem('refreshToken');
+      let currentUser = null;
+
+      
+
+      // Main initialization flow
+      (async () => {
+        try {
+          // Initial authentication check
+          if (!authToken || !refreshToken) {
+            throw new Error('Missing authentication tokens');
+          }
+
+          // Verify token validity
+          let isValid = await verifyToken(authToken);
+
+          // Attempt token refresh if needed
+          if (!isValid) {
+            const newTokens = await handleTokenRefresh(refreshToken);
+            authToken = newTokens.token;
+            refreshToken = newTokens.refreshToken;
+            localStorage.setItem('authToken', authToken);
+            localStorage.setItem('refreshToken', refreshToken);
+            isValid = await verifyToken(authToken);
+          }
+
+          if (!isValid) {
+            throw new Error('Authentication failed after refresh');
+          }
+
+          // Load profile data
+          await fetchUserProfile();
+        } catch (error) {
+          console.error('Authentication error:', error);
+          handleAuthFailure(error.message);
+        }
+      })();
+
+      // Token verification
+      async function verifyToken(token) {
+        try {
+          const response = await fetch(`${API_BASE}/auth/verify`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+
+          if (response.status === 200) {
+            const data = await response.json();
+            currentUser = data.user;
+            localStorage.setItem('user', JSON.stringify(data.user));
+            updateProfileDisplay();
+            return true;
+          }
+          return false;
+        } catch (error) {
+          console.error('Token verification error:', error);
+          return false;
+        }
+      }
+
+      // Token refresh handler
+      async function handleTokenRefresh(oldRefreshToken) {
+        try {
+          const response = await fetch(`${API_BASE}/auth/refresh`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ refreshToken: oldRefreshToken })
+          });
+
+          if (!response.ok) {
+            throw new Error(`Refresh failed: ${response.status}`);
+          }
+
+          const data = await response.json();
+          return {
+            token: data.token,
+            refreshToken: data.refreshToken
+          };
+        } catch (error) {
+          console.error('Token refresh error:', error);
+          throw new Error('Session expired. Please login again.');
+        }
+      }
+
+      // Profile data fetch
+      async function fetchUserProfile() {
+        try {
+          showLoadingState();
+
+          // Fetch user data with phone number
+          const userRes = await fetch(`${API_BASE}/profile`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const userData = await userRes.json();
+          currentUser = userData.user;
+
+          // Fetch addresses separately
+          const addrRes = await fetch(`${API_BASE}/addresses`, {
+            headers: { 'Authorization': `Bearer ${authToken}` }
+          });
+          const addresses = await addrRes.json();
+
+          // Store addresses and find primary address
+          currentUser.addresses = addresses;
+          currentUser.primaryAddress = addresses.find(addr => addr.isPrimary) || addresses[0];
+
+          updateProfileDisplay();
+        } catch (error) {
+          console.error('Profile load error:', error);
+          handleAuthFailure(error.message);
+        }
+      }
+
+      // Authentication failure handler
+      function handleAuthFailure(message = 'Session expired') {
+        localStorage.clear();
+        window.location.href = `../HTML/login.html?error=${encodeURIComponent(message)}`;
+      }
+
+      // UI Updates
+      function updateProfileDisplay() {
+        try {
+          // Update name and phone (using both contact and phone fields for compatibility)
+          document.getElementById('userName').textContent = currentUser?.name || 'Not provided';
+          const contactNumber = currentUser?.contact || currentUser?.phone;
+          document.getElementById('contactNumber').textContent = contactNumber || 'Not provided';
+
+          // Update address display
+          const addressContainer = document.getElementById('shippingAddress');
+          if (currentUser.primaryAddress) {
+            addressContainer.innerHTML = `
+            ${currentUser.primaryAddress.address}<br>
+            ${currentUser.primaryAddress.city}, ${currentUser.primaryAddress.pincode}<br>
+            Phone: ${currentUser.primaryAddress.phone}
+          `;
+          } else {
+            addressContainer.innerHTML = 'No address provided<br>Click edit to add one';
+          }
+        } catch (error) {
+          console.error('UI update error:', error);
+          showErrorState();
+        }
+      }
+
+      // Profile update handler
+      async function updateProfile(field, value) {
+        try {
+          // Map 'contact' updates to 'phone' field for backend
+          const backendField = field === 'contact' ? 'phone' : field;
+
+          const response = await fetch(`${API_BASE}/profile`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify({ [backendField]: value })
+          });
+
+          if (response.status === 401) throw new Error('Session expired');
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Update failed');
+          }
+
+          const data = await response.json();
+          currentUser = data.user;
+          localStorage.setItem('user', JSON.stringify(data.user));
+          updateProfileDisplay();
+          closeModal(field);
+        } catch (error) {
+          console.error('Update error:', error);
+          alert(`Update failed: ${error.message}`);
+        }
+      }
+
+      // Modal management
+      function closeModal(field) {
+        document.getElementById(`${field}Modal`).style.display = 'none';
+      }
+
+      // Loading states
+      function showLoadingState() {
+        document.querySelectorAll('#userName, #shippingAddress, #contactNumber').forEach(el => {
+          el.textContent = 'Loading...';
+        });
+      }
+
+      function showErrorState() {
+        document.getElementById('userName').textContent = 'Error loading data';
+        document.getElementById('shippingAddress').innerHTML = 'Error loading address<br>Please refresh';
+        document.getElementById('contactNumber').textContent = 'Error';
+        setTimeout(() => window.location.reload(), 3000);
+      }
+
+      // Event listeners
+      document.getElementById('editName').addEventListener('click', () => showModal('name'));
+      document.getElementById('editAddress').addEventListener('click', () => showModal('address'));
+      document.getElementById('editContact').addEventListener('click', () => showModal('contact'));
+
+      document.getElementById('saveName').addEventListener('click', () =>
+        updateProfile('name', document.getElementById('newName').value));
+      document.getElementById('saveAddress').addEventListener('click', () =>
+        updateProfile('address', document.getElementById('newAddress').value));
+      document.getElementById('saveContact').addEventListener('click', () =>
+        updateProfile('contact', document.getElementById('newContact').value));
+
+      document.querySelectorAll('.close').forEach(el =>
+        el.addEventListener('click', () =>
+          el.closest('.modal').style.display = 'none'));
+
+      document.getElementById('backButton').addEventListener('click', () =>
+        window.history.back());
+
+      document.getElementById('startShoppingContainer').addEventListener('click', () =>
+        window.location.href = '../HTML/home1.html');
+
+      // Modal display
+      function showModal(type) {
+        switch (type) {
+          case 'name':
+            document.getElementById('newName').value = currentUser?.name || '';
+            break;
+          case 'address':
+            document.getElementById('newAddress').value = currentUser?.address || '';
+            break;
+          case 'contact':
+            // Use both contact and phone fields for compatibility
+            const contactValue = currentUser?.contact || currentUser?.phone;
+            document.getElementById('newContact').value = contactValue || '';
+            break;
+        }
+        document.getElementById(`${type}Modal`).style.display = 'block';
+      }
+
+      // Add to event listeners section
+      document.getElementById('logoutContainer').addEventListener('click', handleLogout);
+
+      // Add this function above the existing functions
+      function handleLogout() {
+        localStorage.clear();
+        window.location.href = '../HTML/login.html';
+      }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+  <div class="dashboard-container">
+    <h1>Welcome, Admin</h1>
+
+    <nav>
+      <button onclick="viewSection('products')">Products</button>
+      <button onclick="viewSection('orders')">Orders</button>
+      <button onclick="viewSection('users')">Users</button>
+      <button onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- Products Section -->
+    <div id="section-products" class="dashboard-section">
+      <h2>Manage Products</h2>
+      <button class="toggle-add-product" onclick="toggleProductForm()">➕ Add New Product</button>
+
+      <div id="add-product-form" style="display: none;">
+        <h3>Add Product Details</h3>
+        <form id="product-form" enctype="multipart/form-data">
+          <div class="form-grid">
+            <input type="text" id="product-name" placeholder="Product Name" required>
+            <input type="file" id="product-image" accept="image/*" required>
+            <input type="text" id="product-category" placeholder="Category" required>
+            <input type="number" id="product-stock" placeholder="Available Stock" required>
+          </div>
+
+          <textarea id="product-description" rows="4" placeholder="Short Description..." required></textarea>
+          <textarea id="product-benefits" rows="4" placeholder="Key Benefits..." required></textarea>
+
+          <h4>Size Variants (with Price)</h4>
+          <div class="form-grid">
+            <input type="text" value="500ml" readonly>
+            <input type="number" id="price-500ml" placeholder="Price for 500ml" required>
+
+            <input type="text" value="1L" readonly>
+            <input type="number" id="price-1l" placeholder="Price for 1L" required>
+
+            <input type="text" value="2L" readonly>
+            <input type="number" id="price-2l" placeholder="Price for 2L" required>
+
+            <input type="text" value="5L" readonly>
+            <input type="number" id="price-5l" placeholder="Price for 5L" required>
+          </div>
+
+          <button type="submit">➕ Add Product</button>
+        </form>
+      </div>
+
+      <div id="product-list"></div>
+    </div>
+
+    <!-- Orders Section -->
+    <div id="section-orders" class="dashboard-section" style="display: none;">
+      <h2>Manage Orders</h2>
+      <p>Orders will be shown here soon...</p>
+    </div>
+
+    <!-- Users Section -->
+    <div id="section-users" class="dashboard-section" style="display: none;">
+      <h2>Manage Users</h2>
+      <div id="user-list">Loading users...</div>
+    </div>
+
+  </div>
+
+  <script>
+    const token = localStorage.getItem('adminToken');
+    if (!token) window.location.href = 'login.html';
+
+    async function verifyAdminToken() {
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/verify', {
+          method: 'GET',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const data = await res.json();
+        if (!data.success) {
+          localStorage.removeItem('adminToken');
+          alert('Session expired. Please log in again.');
+          window.location.href = 'login.html';
+        }
+      } catch (error) {
+        console.error('Verification Error:', error);
+        alert('Error verifying session.');
+        localStorage.removeItem('adminToken');
+        window.location.href = 'login.html';
+      }
+    }
+    verifyAdminToken();
+
+    function viewSection(section) {
+      document.querySelectorAll('.dashboard-section').forEach(div => div.style.display = 'none');
+      document.getElementById(`section-${section}`).style.display = 'block';
+      if (section === 'products') loadProducts();
+      else if (section === 'users') loadUsers();
+    }
+
+    function logout() {
+      localStorage.removeItem('adminToken');
+      window.location.href = 'login.html';
+    }
+
+    function toggleProductForm() {
+      const form = document.getElementById('add-product-form');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    document.getElementById('product-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('product-name').value.trim();
+      const description = document.getElementById('product-description').value.trim();
+      const benefits = document.getElementById('product-benefits').value.trim();
+      const category = document.getElementById('product-category').value.trim();
+      const stock = document.getElementById('product-stock').value.trim();
+      const imageFile = document.getElementById('product-image').files[0];
+
+      const sizes = [
+        { size: "500ml", price: document.getElementById('price-500ml').value.trim() },
+        { size: "1L", price: document.getElementById('price-1l').value.trim() },
+        { size: "2L", price: document.getElementById('price-2l').value.trim() },
+        { size: "5L", price: document.getElementById('price-5l').value.trim() }
+      ];
+
+      if (sizes.some(size => !size.price)) {
+        alert('All sizes must have a valid price.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('benefits', benefits);
+      formData.append('category', category);
+      formData.append('stock', stock);
+      formData.append('image', imageFile);
+      formData.append('sizes', JSON.stringify(sizes));
+
+      try {
+        const res = await fetch('http://localhost:5000/api/products', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          alert('✅ Product added successfully!');
+          document.getElementById('product-form').reset();
+          toggleProductForm();
+          await loadProducts();
+        } else {
+          alert(data.error || 'Failed to add product');
+        }
+      } catch (error) {
+        console.error('Error adding product:', error);
+        alert('Something went wrong! Try again.');
+      }
+    });
+
+    async function loadProducts() {
+      const list = document.getElementById('product-list');
+      list.innerHTML = '<p>Loading products...</p>';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/products?page=1&limit=10', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const data = await res.json();
+        list.innerHTML = '';
+
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          displayProducts(data.data);
+        } else {
+          list.innerHTML = '<p>No products found. Add some products first.</p>';
+        }
+      } catch (error) {
+        console.error('Error loading products:', error);
+        list.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+      }
+    }
+
+    function displayProducts(products) {
+      const list = document.getElementById('product-list');
+      list.innerHTML = ''; // Clear list first
+
+      products.forEach(prod => {
+        const div = document.createElement('div');
+        div.className = 'product-card';
+
+        const sizesList = prod.sizes.map(size => {
+          const price = size.price || 'N/A';
+          return `<li>${size.size} ➔ ₹${price}</li>`;
+        }).join('');
+
+        div.innerHTML = `
+          <h3>${prod.name}</h3>
+          <p><strong>Stock:</strong> ${prod.stock}</p>
+          <p><strong>Sizes & Prices:</strong></p>
+          <ul class="size-price-list">
+            ${sizesList}
+          </ul>
+          <img src="${prod.image}" alt="${prod.name}" width="120" height="120" style="margin-top:10px; border-radius:8px;">
+          <div class="button-group">
+            <button onclick="deleteProduct('${prod._id}')">🗑 Delete</button>
+            <a href="../productDynamic.html?id=${prod._id}" target="_blank">
+              <button>🔍 View</button>
+            </a>
+            <button onclick="editProduct('${prod._id}')">✏️ Edit</button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function editProduct(productId) {
+      alert(`Edit button clicked for Product ID: ${productId}`);
+      // Future: Open modal or navigate to edit form with productId
+      window.location.href = `editProduct.html?id=${productId}`;
+    }
+
+    async function loadUsers() {
+      const userList = document.getElementById('user-list');
+      userList.innerHTML = 'Loading users...';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/users', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const data = await res.json();
+        userList.innerHTML = '';
+
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          displayUsers(data.data);
+        } else {
+          userList.innerHTML = '<p>No users found.</p>';
+        }
+      } catch (error) {
+        console.error('Error loading users:', error);
+        userList.innerHTML = '<p>Failed to load users. Please try again later.</p>';
+      }
+    }
+
+    function displayUsers(users) {
+      const userList = document.getElementById('user-list');
+      userList.innerHTML = ''; // Clear the user list first
+
+      users.forEach(user => {
+        const div = document.createElement('div');
+        div.className = 'user-card';
+
+        div.innerHTML = `
+          <h3>${user.name}</h3>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Role:</strong> ${user.role}</p>
+          <div class="button-group">
+            <button onclick="deleteUser('${user._id}')">🗑 Delete</button>
+          </div>
+        `;
+        userList.appendChild(div);
+      });
+    }
+
+    async function deleteUser(userId) {
+      if (!confirm('Are you sure you want to delete this user?')) return;
+
+      try {
+        const res = await fetch(`http://localhost:5000/api/users/${userId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          await loadUsers();
+        } else {
+          alert('Failed to delete user');
+        }
+      } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Something went wrong! Try again.');
+      }
+    }
+
+    // Initial Load
+    loadProducts();
+    loadUsers();
+  </script>
+
+</body>
+
+</html>

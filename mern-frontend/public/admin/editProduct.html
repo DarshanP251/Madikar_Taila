@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Product</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Edit Product</h1>
+    <div id="form-container">
+      <form id="edit-form" enctype="multipart/form-data">
+        <input type="hidden" id="product-id" />
+
+        <div class="form-grid">
+          <input type="text" id="name" placeholder="Product Name" required />
+          <input type="file" id="image" accept="image/*" />
+          <input type="text" id="category" placeholder="Category" required />
+          <input type="number" id="stock" placeholder="Available Stock" required />
+        </div>
+
+        <textarea id="description" rows="3" placeholder="Short Description..." required></textarea>
+        <textarea id="benefits" rows="3" placeholder="Key Benefits..."></textarea>
+
+        <h4>Size Variants (with Price)</h4>
+        <div class="form-grid">
+          <input type="text" value="500ml" readonly />
+          <input type="number" id="price-500ml" placeholder="Price for 500ml" required />
+
+          <input type="text" value="1L" readonly />
+          <input type="number" id="price-1l" placeholder="Price for 1L" required />
+
+          <input type="text" value="2L" readonly />
+          <input type="number" id="price-2l" placeholder="Price for 2L" required />
+
+          <input type="text" value="5L" readonly />
+          <input type="number" id="price-5l" placeholder="Price for 5L" required />
+        </div>
+
+        <button type="submit">💾 Save Changes</button>
+        <button type="button" id="cancel">✖ Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id');
+      if (!productId) {
+        alert('No product ID provided.');
+        return window.location.href = 'dashboard.html';
+      }
+
+      const token = localStorage.getItem('adminToken');
+      if (!token) return window.location.href = 'login.html';
+
+      const apiBase = 'http://localhost:5000/api/products';
+
+      // Form elements
+      const form = document.getElementById('edit-form');
+      const cancel = document.getElementById('cancel');
+      const fld = {
+        name:        document.getElementById('name'),
+        category:    document.getElementById('category'),
+        stock:       document.getElementById('stock'),
+        description: document.getElementById('description'),
+        benefits:    document.getElementById('benefits'),
+        image:       document.getElementById('image'),
+        price500:    document.getElementById('price-500ml'),
+        price1l:     document.getElementById('price-1l'),
+        price2l:     document.getElementById('price-2l'),
+        price5l:     document.getElementById('price-5l')
+      };
+
+      // Load existing product data
+      async function loadProduct() {
+        try {
+          const res  = await fetch(`${apiBase}/${productId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          const json = await res.json();
+          console.log('GET product →', json);
+          if (!json.success || !json.data) throw new Error('Product not found');
+
+          const p = json.data;
+          fld.name.value        = p.name;
+          fld.category.value    = p.category;
+          fld.stock.value       = p.stock;
+          fld.description.value = p.description;
+          fld.benefits.value    = p.benefits || '';
+          p.sizes.forEach(s => {
+            if (s.size === '500ml') fld.price500.value = s.price;
+            if (s.size === '1L')    fld.price1l.value = s.price;
+            if (s.size === '2L')    fld.price2l.value = s.price;
+            if (s.size === '5L')    fld.price5l.value = s.price;
+          });
+        } catch (err) {
+          console.error(err);
+          alert('Could not load product details. Redirecting back.');
+          window.location.href = 'dashboard.html';
+        }
+      }
+
+      // Handle form submission
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name',        fld.name.value.trim());
+        formData.append('category',    fld.category.value.trim());
+        formData.append('stock',       fld.stock.value.trim());
+        formData.append('description', fld.description.value.trim());
+        formData.append('benefits',    fld.benefits.value.trim());
+        if (fld.image.files[0]) formData.append('image', fld.image.files[0]);
+        const sizes = [
+          { size: '500ml', price: fld.price500.value.trim() },
+          { size: '1L',    price: fld.price1l.value.trim() },
+          { size: '2L',    price: fld.price2l.value.trim() },
+          { size: '5L',    price: fld.price5l.value.trim() },
+        ];
+        formData.append('sizes', JSON.stringify(sizes));
+
+        try {
+          const res = await fetch(`${apiBase}/${productId}`, {
+            method:  'PUT',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body:     formData
+          });
+
+          let json;
+          const contentType = res.headers.get('content-type') || '';
+          if (contentType.includes('application/json')) {
+            json = await res.json();
+          } else {
+            const text = await res.text();
+            console.error('Unexpected non-JSON response:', text);
+            throw new Error('Server returned non-JSON error');
+          }
+
+          console.log('PUT product →', json);
+          if (!res.ok) {
+            throw new Error(json.error || 'Update failed');
+          }
+
+          alert('✅ Product updated successfully!');
+          window.location.href = 'dashboard.html';
+        } catch (err) {
+          console.error(err);
+          alert(`Error updating product: ${err.message}`);
+        }
+      });
+
+      // Cancel button
+      cancel.addEventListener('click', () => {
+        window.location.href = 'dashboard.html';
+      });
+
+      // Initialize
+      loadProduct();
+    })();
+  </script>
+</body>
+</html>

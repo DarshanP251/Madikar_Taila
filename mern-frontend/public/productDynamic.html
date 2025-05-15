@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <title>Product Detail</title>
+
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="ProductDetail.css" />
+  <link rel="stylesheet" href="../CSS/navbar.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne+Vintage:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
+  <style>
+   
+
+    .primarybuttonricon-parent {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #f9f9f9;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .sample {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .drowdown-list {
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .titleprice {
+      margin-bottom: 15px;
+    }
+
+    .description,
+    .description2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo1">
+    <div class="madikar-taila">Madikar Taila</div>
+    <img class="black-icon" alt="" src="../SRC/drop.svg">
+
+  </div>
+  <div class="product-detail">
+    <img id="productImage" class="dsc00197-1-icon" alt="Product Image" src="../DSC00197 1.png" />
+    <a href="../HTML/home1.html">
+      <img class="arrow-chevron-left" alt="Go Back" src="../SRC/Chevron_Left.svg" />
+    </a>
+
+    <div class="primarybuttonricon-parent">
+      <div class="titleprice">
+        <b class="groundnut-oil" id="productName">Groundnut Oil</b>
+        <div class="ltr" id="productSize">1 Ltr</div>
+        <div class="div1" id="productPrice">₹325/-</div>
+      </div>
+
+      <div class="buttons" id="quantitySelector">
+        <div class="medium" id="selectedQuantityText">Select Quantity</div>
+        <div class="system-icons">
+          <img class="vector-icon1" alt="" src="../SRC/Chevron_Down.svg" />
+        </div>
+      </div>
+
+      <div class="primarybuttonricon" id="addToCartButton">
+        <div class="primarybutton">
+          <div class="add-to-cart">Add to cart</div>
+        </div>
+        <img class="vector-icon" alt="" src="../SRC/Vector.svg" />
+      </div>
+    </div>
+
+    <div class="description1">
+      <div class="small">Description</div>
+      <div class="system-icons1">
+        <img class="vector-icon3" alt="" src="../SRC/Vector.svg" />
+      </div>
+    </div>
+
+    <div class="description">
+      <div class="cold-pressed-groundnut-oil" id="productDescription">
+        Product description goes here...
+      </div>
+    </div>
+
+    <div class="benefits">
+      <div class="small">Benefits</div>
+      <div class="system-icons1"></div>
+    </div>
+
+    <div class="description2">
+      <div class="cold-pressed-groundnut-oil1" id="productBenefits">
+        Benefits description goes here...
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-icon" id="cartIconContainer">
+    <div class="cart-icon-child"></div>
+    <img class="shopping-bag-icon" id="cartNavigate" alt="" src="../SRC/Shopping bag.png" />
+  </div>
+  <div class="profile-icon1" id="profileContainer">
+    <div class="profile-child1"></div>
+    <img class="prof-icon1" id="profileNavigate" alt="" src="../SRC/shopping-bag-icon1.png" />
+  </div>
+
+  <div class="cart-counter" id="cartCounter" style="position: absolute; top: 30px; right: -1px; background: #48cb66; color: white; 
+padding: 3px 8px; border-radius: 50%; display: none;">
+  </div>
+  <!-- Quantity Selection Popup -->
+  <div id="quantityPopup" class="popup-overlay" style="display: none">
+    <div class="sample">
+      <div class="input">
+        <div class="label">Select Quantity</div>
+        <div class="form">
+          <div class="text-wrap">
+            <div class="selected-option" id="currentSelectionText">Select quantity</div>
+          </div>
+        </div>
+
+        <div class="drowdown-list" id="quantityOptions">
+          <div class="dropdown-item" data-size="500ml" data-price-multiplier="0.5">
+            <div class="text-wrap1">
+              <div class="selected-option">500ml - ₹<span class="size-price">162.5</span></div>
+            </div>
+          </div>
+          <div class="dropdown-item" data-size="1 Ltr" data-price-multiplier="1">
+            <div class="text-wrap1">
+              <div class="selected-option">1 Ltr - ₹<span class="size-price">325</span></div>
+            </div>
+          </div>
+          <div class="dropdown-item" data-size="2 Ltr" data-price-multiplier="2">
+            <div class="text-wrap1">
+              <div class="selected-option">2 Ltr - ₹<span class="size-price">650</span></div>
+            </div>
+          </div>
+          <div class="dropdown-item" data-size="5 Ltr" data-price-multiplier="5">
+            <div class="text-wrap1">
+              <div class="selected-option">5 Ltr - ₹<span class="size-price">1625</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (!productId) {
+      alert('No product ID provided.');
+      window.location.href = '/';
+    }
+
+    let currentProduct = null;
+    let basePrice = 325; // Default base price for 1 Ltr
+    let selectedQuantity = "1 Ltr";
+    let selectedPrice = 325;
+
+    var cartIconContainer = document.getElementById("cartIconContainer");
+    if (cartIconContainer) {
+      cartIconContainer.addEventListener("click", function (e) {
+        window.location.href = "../HTML/EmptyCart.html";
+      });
+    }
+
+    var profileContainer = document.getElementById("profileContainer");
+    if (profileContainer) {
+      profileContainer.addEventListener("click", function (e) {
+        window.location.href = "../HTML/profilepage.html";
+      });
+    }
+
+
+    // DOM Elements
+    const quantitySelector = document.getElementById('quantitySelector');
+    const quantityPopup = document.getElementById('quantityPopup');
+    const quantityOptions = document.getElementById('quantityOptions');
+    const selectedQuantityText = document.getElementById('selectedQuantityText');
+    const currentSelectionText = document.getElementById('currentSelectionText');
+    const addToCartButton = document.getElementById('addToCartButton');
+    const productPriceElement = document.getElementById('productPrice');
+    const productSizeElement = document.getElementById('productSize');
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProduct();
+      setupEventListeners();
+      updateCartCounter();
+    });
+
+    async function loadProduct() {
+      try {
+        const res = await fetch(`http://localhost:5000/api/products/${productId}`);
+        const data = await res.json();
+
+        if (!res.ok || !data.success || !data.data) throw new Error("Product not found.");
+
+        currentProduct = data.data;
+        basePrice = currentProduct.price || 325;
+
+        // Update DOM with product data
+        document.getElementById('productName').textContent = currentProduct.name || 'Unnamed';
+        document.getElementById('productImage').src = currentProduct.image || '../default-image.png';
+        document.getElementById('productDescription').textContent = currentProduct.description || 'No description.';
+        document.getElementById('productBenefits').textContent = currentProduct.benefits || currentProduct.description || 'No benefits.';
+
+        // If product has specific sizes, use those instead of default options
+        if (currentProduct.sizes && currentProduct.sizes.length > 0) {
+          quantityOptions.innerHTML = '';
+          currentProduct.sizes.forEach(size => {
+            const option = document.createElement('div');
+            option.className = 'dropdown-item';
+            option.dataset.size = size.size;
+            option.dataset.price = size.price;
+            option.innerHTML = `
+              <div class="text-wrap1">
+                <div class="selected-option">${size.size} - ₹${size.price}</div>
+              </div>
+            `;
+            quantityOptions.appendChild(option);
+          });
+
+          // Set first size as default
+          selectedQuantity = currentProduct.sizes[0].size;
+          selectedPrice = currentProduct.sizes[0].price;
+        } else {
+          // Use default sizes with calculated prices
+          updateSizePrices();
+        }
+
+        updatePriceDisplay();
+      } catch (err) {
+        alert("Error loading product: " + err.message);
+        console.error(err);
+      }
+    }
+
+    function updateSizePrices() {
+      const sizePrices = quantityOptions.querySelectorAll('.size-price');
+      sizePrices.forEach(span => {
+        const multiplier = parseFloat(span.parentElement.parentElement.parentElement.dataset.priceMultiplier);
+        span.textContent = (basePrice * multiplier).toFixed(multiplier % 1 === 0 ? 0 : 2);
+      });
+    }
+
+    function setupEventListeners() {
+      // Quantity selector click
+      quantitySelector.addEventListener('click', () => {
+        quantityPopup.style.display = "flex";
+        currentSelectionText.textContent = selectedQuantity;
+      });
+
+      // Quantity option clicks
+      quantityOptions.addEventListener('click', (e) => {
+        const item = e.target.closest('.dropdown-item');
+        if (!item) return;
+
+        selectedQuantity = item.dataset.size;
+        selectedPrice = item.dataset.price || (basePrice * parseFloat(item.dataset.priceMultiplier));
+
+        selectedQuantityText.textContent = selectedQuantity;
+        currentSelectionText.textContent = selectedQuantity;
+        updatePriceDisplay();
+        quantityPopup.style.display = "none";
+      });
+
+      // Close popup when clicking outside
+      quantityPopup.addEventListener('click', (e) => {
+        if (e.target === quantityPopup) {
+          quantityPopup.style.display = "none";
+        }
+      });
+
+      // Add to cart button
+      addToCartButton.addEventListener('click', addToCart);
+    }
+
+    function updatePriceDisplay() {
+      productPriceElement.textContent = `₹${selectedPrice}/-`;
+      productSizeElement.textContent = selectedQuantity;
+    }
+
+    // Add to cart function
+    async function addToCart() {
+      const token = localStorage.getItem("authToken");
+
+      if (!token) {
+        alert("Please login first!");
+        window.location.href = "../HTML/login.html";
+        return;
+      }
+
+      try {
+        // Find the selected size in the product's sizes array
+        let selectedSize = null;
+        if (currentProduct.sizes && currentProduct.sizes.length > 0) {
+          selectedSize = currentProduct.sizes.find(size => size.size === selectedQuantity);
+        }
+
+        const response = await fetch("http://localhost:5000/api/cart/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            productId: currentProduct._id,
+            sizeId: selectedSize ? selectedSize._id : null,
+            quantity: 1,
+            price: selectedPrice
+          })
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(responseData.error || "Failed to add to cart");
+        }
+
+        alert("Product added to cart!");
+        updateCartCounter();
+      } catch (error) {
+        console.error("Add to cart error:", error);
+        alert(error.message);
+      }
+    }
+
+    // Update cart counter
+    async function updateCartCounter() {
+      const token = localStorage.getItem("authToken");
+      const cartCounter = document.getElementById("cartCounter");
+
+      if (!token) {
+        if (cartCounter) cartCounter.style.display = "none";
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/cart", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch cart");
+
+        const cartData = await response.json();
+        const totalItems = cartData.items.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (cartCounter) {
+          cartCounter.textContent = totalItems;
+          cartCounter.style.display = totalItems > 0 ? "block" : "none";
+        }
+      } catch (error) {
+        console.error("Cart counter update failed:", error);
+        if (cartCounter) cartCounter.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

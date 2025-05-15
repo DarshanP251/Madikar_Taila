@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+
+
+	<link rel="stylesheet" href="../CSS/global.css" />
+	<link rel="stylesheet" href="../CSS/Essential.css" />
+	<link rel="stylesheet" href="../CSS/navbar.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hawthorne Vintage:wght@400&display=swap" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+
+
+
+</head>
+
+<body>
+
+	<div class="essential-oil">
+		<div class="essential-oil-child">
+		</div>
+		<div class="essential-oil-item">
+		</div>
+		<div class="logo">
+			<div class="madikar-taila">Madikar Taila</div>
+			<img class="black-icon" alt="" src="../SRC/drop.svg">
+
+		</div>
+		<img class="arrow-chevron-left" id="backNavigate" alt="" src="../SRC/Chevron_Left.svg">
+
+		<div class="essential-oils">Essential Oils</div>
+		<!-- Products Render Here -->
+		<div class="product-grid"
+			style="position: absolute; top: 130px; left: 20px; width: 100%; display: flex; flex-direction: column;">
+		</div>
+		<div class="nav-bar">
+            <div class="background">
+            </div>
+            <div class="buttons4" id="buttonsContainer01">
+              <div class="medium3">Shop</div>
+            </div>
+            <div class="buttons5" id="buttonsContainer1">
+              <div class="medium3">About</div>
+            </div>
+            <img class="magnifier-icon" alt="" src="../SRC/Magnifier.png" id="magnifierIcon">
+
+            <div class="buttons6" id="buttonsContainer2">
+              <div class="medium3">Home</div>
+            </div>
+          </div>
+
+	</div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+	let allProducts = [];
+    let selectedProduct = null;
+    let selectedSize = null;
+    let selectedQuantity = 1;
+
+    document.getElementById("backNavigate")?.addEventListener("click", () => {
+      window.location.href = "../HTML/home1.html";
+    });
+
+    function navigateTo(page) {
+      switch (page) {
+        case 'home':
+          window.location.href = "../HTML/home1.html";
+          break;
+        case 'about':
+          window.location.href = "../HTML/about.html";
+          break;
+        case 'shop':
+          window.location.href = "../HTML/shop.html";
+          break;
+        default:
+          break;
+      }
+    }
+
+    window.onload = fetchProducts;
+
+    async function fetchProducts() {
+      try {
+        const response = await fetch('http://localhost:5000/api/products');
+        const data = await response.json();
+        if (data.success) {
+          allProducts = data.data.filter(product =>
+            ["Essential Oil", "Essential"].some(keyword =>
+              product.category?.toLowerCase().includes(keyword)
+            )
+          );
+          renderProducts(allProducts);
+        } else {
+          alert('Failed to load products.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Try again.');
+      }
+    }
+
+    function renderProducts(products) {
+      const productGrid = document.querySelector('.product-grid');
+      productGrid.innerHTML = '';
+      products.forEach(product => {
+        const defaultSize = product.sizes?.[0] || {};
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.style = 'position:relative;width:365px;height:200px;margin-bottom:30px;box-shadow:0 4px 4px rgba(0,0,0,0.25);';
+
+        productCard.innerHTML = `
+          <img class="product-bg" src="../SRC/Rectangle 6.png" style="position:absolute;width:100%;height:100%;border-radius:15px;">
+          <div style="position:absolute;top:7px;left:176px;width:185px;height:25px;">
+            <b style="font-size:15px;">${product.name}</b>
+            <b id="productPrice_${product._id}" style="position:absolute;right:0;font-size:15px;">${defaultSize.price || 0}/-</b>
+          </div>
+          <img src="${product.image}" alt="${product.name}" style="position:absolute;top:7px;left:13px;width:155px;height:185px;object-fit:cover;border-radius:10px;cursor:pointer;" onclick="viewProduct('${product._id}')">
+          <div style="position:absolute;top:32px;right:5px;font-size:12px;width:185px;height:72px;overflow:hidden;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;">${product.description}</div>
+          <div style="position:absolute;top:129px;left:204px;width:120px;height:30px;background:#f0f0f0;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="selectQuantity('${product._id}')">
+            <div id="quantitySelect_${product._id}" style="font-size:12px;color:#555;">Select Quantity</div>
+          </div>
+          <div style="position:absolute;top:159px;left:204px;width:120px;height:30px;background:#48cb66;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:white;" onclick="addToCart('${product._id}')">
+            <div style="font-size:12px;">Add to cart</div>
+          </div>
+        `;
+        productGrid.appendChild(productCard);
+      });
+    }
+
+    function viewProduct(id) {
+      window.location.href = `../public/ProductDynamic.html?id=${id}`;
+    }
+
+    function selectQuantity(productId) {
+      selectedProduct = allProducts.find(p => p._id === productId);
+      if (!selectedProduct) return;
+      selectedSize = selectedProduct.sizes?.[0] || null;
+
+      const popup = document.getElementById("sampleContainer");
+      if (!popup) return;
+      popup.style.display = "flex";
+      popup.style.zIndex = 1000;
+      popup.style.backgroundColor = "rgba(113,113,113,0.3)";
+      popup.style.alignItems = "center";
+      popup.style.justifyContent = "center";
+
+      const closeHandler = (e) => {
+        if (e.target === popup) {
+          popup.style.display = "none";
+          popup.removeEventListener("click", closeHandler);
+        }
+      };
+      popup.addEventListener("click", closeHandler);
+      updateQuantityPopup();
+    }
+
+    function updateQuantityPopup() {
+      const quantityList = document.querySelector('.drowdown-list');
+      if (!quantityList || !selectedProduct) return;
+      quantityList.innerHTML = '';
+
+      selectedProduct.sizes.forEach(size => {
+        const item = document.createElement('div');
+        item.className = 'dropdown-item';
+        item.textContent = `${size.size} - ₹${size.price}`;
+        item.style = 'padding:8px;cursor:pointer;';
+        if (selectedSize && size.size === selectedSize.size) {
+          item.style.backgroundColor = '#e0f7fa';
+          item.style.fontWeight = 'bold';
+        }
+        item.onclick = () => selectSizeAndPrice(size);
+        quantityList.appendChild(item);
+      });
+    }
+
+    function selectSizeAndPrice(size) {
+      selectedSize = size;
+      const priceElem = document.querySelector(`#productPrice_${selectedProduct._id}`);
+      const qtyElem = document.querySelector(`#quantitySelect_${selectedProduct._id}`);
+      if (priceElem) priceElem.textContent = `${size.price}/-`;
+      if (qtyElem) qtyElem.textContent = `${size.size} - ₹${size.price}`;
+      document.getElementById("sampleContainer").style.display = "none";
+    }
+
+    async function addToCart(productId) {
+      selectedProduct = allProducts.find(p => p._id === productId);
+      if (!selectedProduct || !selectedSize) {
+        selectQuantity(productId);
+        alert("Please select a size first.");
+        return;
+      }
+      const token = localStorage.getItem('token');
+      if (!token) return window.location.href = "../public/login.html";
+
+      try {
+        const res = await fetch('http://localhost:5000/api/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            productId: selectedProduct._id,
+            sizeId: selectedSize._id,
+            quantity: selectedQuantity
+          })
+        });
+        const result = await res.json();
+        if (res.status === 201) {
+          alert(`${selectedProduct.name} (${selectedSize.size}) added to cart!`);
+        } else {
+          throw new Error(result.message || "Failed to add to cart");
+        }
+      } catch (err) {
+        alert(err.message || "Couldn't add to cart");
+        console.error(err);
+      }
+    }
+
+	const aboutBtn = document.getElementById("buttonsContainer1");
+    if (aboutBtn) {
+      aboutBtn.addEventListener("click", function () {
+        window.location.href = "../HTML/AboutUs.html";
+      });
+    }
+
+    const shopBtn = document.getElementById("buttonsContainer01");
+    if (shopBtn) {
+      shopBtn.addEventListener("click", function () {
+        window.location.href = "../HTML/Shopp1.html";
+      });
+    }
+
+    const homeBtn = document.getElementById("buttonsContainer2");
+    if (homeBtn) {
+      homeBtn.addEventListener("click", function () {
+        window.location.href = "../HTML/home1.html";
+      });
+    }
+
+	
+</script>
